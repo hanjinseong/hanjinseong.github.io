@@ -38,7 +38,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
 
@@ -119,10 +119,7 @@
       <div class="hero__text">
         <p class="eyebrow"><span class="dot" aria-hidden="true"></span>M.S. Student · CCS Graduate School of Mobility, KAIST</p>
         <h1 class="hero__name">Jinseong Han <span class="hero__ko" lang="ko">한진성</span></h1>
-        <p class="hero__lead">
-          Researching <mark>multi-physics factors for electric vehicles</mark> based on <mark>artificial intelligence</mark> —
-          from LLM agents that automate motor design to neural surrogates for electromagnetics, vibration, flow and manufacturing.
-        </p>
+        <p class="hero__lead">Researching <mark>multi-physics factors for electric vehicles</mark> based on <mark>artificial intelligence</mark>.</p>
         <ul class="chips" aria-label="Research interests">
           <li>Agentic design</li>
           <li>Multi-physics</li>
@@ -140,7 +137,7 @@
         </ul>
       </div>
 
-      <!-- Signature visual: an 8-pole / 48-slot IPMSM cross-section. The rotor turns in sync with the rotating stator field. -->
+      <!-- Small accent: an 8-pole / 48-slot IPMSM cross-section. The rotor turns in sync with the rotating stator field. -->
       <div class="motor" id="motor">
         <svg class="motor__svg" viewBox="-322 -322 644 644" role="img" aria-label="Animated cross-section of an interior permanent magnet synchronous motor">
           <defs>
@@ -152,6 +149,7 @@
               <rect class="m-pm" x="-22" y="-4" width="44" height="8" rx="1" transform="translate(163.1 30.3) rotate(58.73)"/>
               <rect class="m-pm" x="-22" y="-4" width="44" height="8" rx="1" transform="translate(163.1 -30.3) rotate(-58.73)"/>
               <circle class="m-pocket" cx="127.5" cy="52.8" r="5.5"/>
+              <path class="m-pocket" d="M106.5 27.54A110 110 0 0 1 94.78 55.83A12 12 0 0 1 74.1 43.65A86 86 0 0 0 83.26 21.53A12 12 0 0 1 106.5 27.54Z"/>
             </g>
           </defs>
           <g class="m-axes"><path d="M-318 0H318M0 -318V318"/></g>
@@ -166,20 +164,11 @@
           <g class="m-rotor">
             <circle class="m-iron m-iron--rotor" r="199"/>
             <g class="m-poles"><use href="#m-pole" transform="rotate(0)"/><use href="#m-pole" transform="rotate(45)"/><use href="#m-pole" transform="rotate(90)"/><use href="#m-pole" transform="rotate(135)"/><use href="#m-pole" transform="rotate(180)"/><use href="#m-pole" transform="rotate(225)"/><use href="#m-pole" transform="rotate(270)"/><use href="#m-pole" transform="rotate(315)"/></g>
-            <circle class="m-shaft" r="122"/>
-          </g>
-          <g class="m-notes">
-            <polyline points="176,-226 226,-300 320,-300"/><circle cx="176" cy="-226" r="3"/>
-            <text x="320" y="-307" text-anchor="end">STATOR · 48 SLOTS</text>
-            <polyline points="-112,143 -226,300 -320,300"/><circle cx="-112" cy="143" r="3"/>
-            <text x="-320" y="316" text-anchor="start">ROTOR · 8 POLES · V-SHAPE PM</text>
+            <circle class="m-shaft" r="58"/>
+            <rect class="m-key" x="-8" y="-66" width="16" height="13" rx="1.5"/>
+            <circle class="m-center" r="4"/>
           </g>
         </svg>
-        <div class="motor__core">
-          <span class="motor__mono" aria-hidden="true">JH</span>
-          <img src="assets/img/profile.jpg" width="413" height="413" alt="Portrait of Jinseong Han" decoding="async"
-               onerror="this.remove()">
-        </div>
       </div>
     </div>
 
@@ -450,10 +439,23 @@
       <header class="sec__head">
         <span class="sec__no">04</span>
         <h2>About</h2>
-        <p>I am an M.S. student at the CCS Graduate School of Mobility, KAIST, working in the <a href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener">Smart Design Lab</a> with Prof. Namwoo Kang. My interests are agentic design, multi-physics and electric motors.</p>
       </header>
 
       <div class="cv">
+        <section class="cvcard cvcard--profile reveal" aria-label="Profile">
+          <img class="profile__photo" src="assets/img/profile.jpg" width="413" height="516" alt="Portrait of Jinseong Han" loading="lazy" decoding="async">
+          <div class="profile__body">
+            <p class="profile__name">Jinseong Han <span lang="ko">한진성</span></p>
+            <p class="profile__role">M.S. Student · CCS Graduate School of Mobility, KAIST</p>
+            <p class="profile__bio">I am an M.S. student at the CCS Graduate School of Mobility, KAIST, working in the Smart Design Lab with Prof. Namwoo Kang. My interests are agentic design, multi-physics and electric motors.</p>
+            <dl class="profile__facts">
+              <div><dt>Lab</dt><dd><a href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener">Smart Design Lab <svg class="i"><use href="#i-up-right"/></svg></a></dd></div>
+              <div><dt>Contact</dt><dd><a href="mailto:nethan1012@kaist.ac.kr">nethan1012@kaist.ac.kr</a></dd></div>
+              <div><dt>Research interests</dt><dd>Agentic design · Multi-physics · Electric motors</dd></div>
+            </dl>
+          </div>
+        </section>
+
         <section class="cvcard cvcard--wide reveal" aria-labelledby="cv-edu">
           <h3 id="cv-edu">Education</h3>
           <ol class="timeline">

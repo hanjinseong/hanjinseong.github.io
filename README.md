@@ -13,7 +13,7 @@ index.html               한 페이지에 전부: Hero → Research → Live dem
 assets/css/style.css     디자인 전체 (라이트/다크 테마 토큰은 파일 맨 위 :root)
 assets/css/noscript.css  JS가 꺼진 브라우저용 보정
 assets/js/main.js        테마 토글, 연구 상세 모달, 데모 iframe, 스크롤 효과
-assets/img/profile.jpg   프로필 사진 (없으면 모터 가운데에 "JH"가 표시됨)
+assets/img/profile.jpg   프로필 사진 (About 섹션 맨 위 프로필 카드)
 assets/img/research/     연구 그림 (*-thumb.jpg = 카드용 축소본)
 assets/img/og.png        카톡/슬랙/링크드인 공유 미리보기 이미지
 favicon.svg, robots.txt, sitemap.xml, .nojekyll
@@ -44,13 +44,13 @@ preview.bat, tools/serve.ps1   로컬 미리보기 서버 (Node/Python 불필요
 | 논문 추가 | `index.html`의 `#publications`에서 `<li class="pub">…</li>` 블록 하나를 복사해 수정. Domestic 목록은 앞의 3개만 기본 노출되고, `data-more` 속성이 붙은 항목은 "Show all" 뒤에 숨습니다. |
 | 연구 주제 추가 | ① `#research`의 `<a class="card" … data-modal="r-xxx">` 카드 복사 ② 파일 맨 아래 `<dialog class="modal" id="r-xxx">` 상세 블록 복사. 두 곳의 `r-xxx` id만 맞추면 됩니다. `https://…/#r-xxx` 로 바로 열리는 링크도 됩니다. |
 | 그림 교체/추가 | `assets/img/research/`에 **흰 배경** JPG/PNG로 넣기(투명 PNG는 다크 모드에서 글자가 안 보임). 카드용은 가로 ~1000px, 상세용은 ~2000px 권장. `<img>`의 `width`/`height` 값도 실제 픽셀에 맞게 수정. |
-| 프로필 사진 교체 | `assets/img/profile.jpg` 덮어쓰기 (정사각형 권장, 얼굴이 위쪽 1/3 지점). 위치 미세조정은 `style.css`의 `.motor__core img { object-position }`. |
+| 프로필 사진 교체 | `assets/img/profile.jpg` 덮어쓰기 (세로 4:5 비율 권장, 예: 413×516). 크기는 `style.css`의 `.profile__photo`. |
 | 수상/프로젝트/특허/학력 | `index.html`의 `#about` 섹션 카드들. |
 | "Last updated" | `index.html` 맨 아래 footer + `sitemap.xml`의 `lastmod`. |
 | 색/폰트 | `style.css` 맨 위 `:root`(라이트) / `[data-theme="dark"]`(다크) 변수. |
 
 ## 메모
 
-- 폰트: Google Fonts (Instrument Serif / Geist / Geist Mono).
+- 폰트: Google Fonts — Geist(제목·본문 전부) + Geist Mono(라벨·숫자). 세리프는 쓰지 않습니다.
 - Hero의 모터(8극 48슬롯 IPMSM 단면)는 인라인 SVG + CSS 애니메이션입니다. 회전자 속도(60초/회전)와 고정자 코일 점등 순서(3상, 7.5초 주기)가 맞물려 "동기" 회전하도록 되어 있으니 한쪽만 바꾸지 마세요 (`.m-rotor`, `.m-coils`).
 - 데모 콘솔은 언어를 `localStorage['motorai-lang']`에 저장합니다. 같은 도메인에서 처음 방문한 사람에게는 이 사이트가 값을 `en`으로 넣어 영어 콘솔이 먼저 보이게 합니다 (`main.js`).
