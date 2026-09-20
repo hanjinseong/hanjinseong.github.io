@@ -44,7 +44,7 @@ preview.bat, tools/serve.ps1   로컬 미리보기 서버 (Node/Python 불필요
 | 논문 추가 | `index.html`의 `#publications`에서 `<li class="pub">…</li>` 블록 하나를 복사해 수정. Domestic 목록은 앞의 3개만 기본 노출되고, `data-more` 속성이 붙은 항목은 "Show all" 뒤에 숨습니다. |
 | 연구 주제 추가 | ① `#research`의 `<a class="card" … data-modal="r-xxx">` 카드 복사 ② 파일 맨 아래 `<dialog class="modal" id="r-xxx">` 상세 블록 복사. 두 곳의 `r-xxx` id만 맞추면 됩니다. `https://…/#r-xxx` 로 바로 열리는 링크도 됩니다. |
 | 그림 교체/추가 | `assets/img/research/`에 **흰 배경** JPG/PNG로 넣기(투명 PNG는 다크 모드에서 글자가 안 보임). 카드용은 가로 ~1000px, 상세용은 ~2000px 권장. `<img>`의 `width`/`height` 값도 실제 픽셀에 맞게 수정. |
-| 프로필 사진 교체 | `assets/img/profile.jpg` 덮어쓰기 (세로 4:5 비율 권장, 예: 413×516). 크기는 `style.css`의 `.profile__photo`. |
+| 프로필 사진 교체 | `assets/img/profile.jpg` 덮어쓰기 (세로 4:5 비율 권장, 예: 413×516). 크기는 `style.css`의 `.hero__photo`. |
 | 수상/프로젝트/특허/학력 | `index.html`의 `#about` 섹션 카드들. |
 | "Last updated" | `index.html` 맨 아래 footer + `sitemap.xml`의 `lastmod`. |
 | 색/폰트 | `style.css` 맨 위 `:root`(라이트) / `[data-theme="dark"]`(다크) 변수. |
@@ -52,6 +52,6 @@ preview.bat, tools/serve.ps1   로컬 미리보기 서버 (Node/Python 불필요
 ## 메모
 
 - 폰트: **나눔스퀘어 하나로 통일** — 본문 Bold(700), 제목 ExtraBold(800). `style.css` 맨 위 `@font-face`에서 PC에 설치된 폰트를 먼저 쓰고, 없으면 jsDelivr CDN(`moonspam/NanumSquare`)에서 woff2를 받습니다.
-- **수정했는데 예전 모양이 보이면 브라우저 캐시입니다.** `style.css`/`main.js`를 고친 뒤에는 `index.html`·`404.html`의 `style.css?v=4`, `main.js?v=4` 숫자를 하나 올려 주세요(방문자 브라우저가 새 파일을 받게 됨). 본인 화면은 Ctrl+F5.
-- Hero의 모터(8극 48슬롯 IPMSM 단면)는 인라인 SVG + CSS 애니메이션입니다. 회전자 속도(60초/회전)와 고정자 코일 점등 순서(3상, 7.5초 주기)가 맞물려 "동기" 회전하도록 되어 있으니 한쪽만 바꾸지 마세요 (`.m-rotor`, `.m-coils`).
+- **수정했는데 예전 모양이 보이면 브라우저 캐시입니다.** `style.css`/`main.js`를 고친 뒤에는 `index.html`·`404.html`의 `style.css?v=N`, `main.js?v=N` 숫자를 하나 올려 주세요(방문자 브라우저가 새 파일을 받게 됨). 본인 화면은 Ctrl+F5.
+- Research 제목 오른쪽의 작은 모터(8극 48슬롯 IPMSM 단면)는 인라인 SVG + CSS 애니메이션입니다. 회전자 속도(60초/회전)와 고정자 코일 점등 순서(3상, 7.5초 주기)가 맞물려 "동기" 회전하도록 되어 있으니 한쪽만 바꾸지 마세요 (`.m-rotor`, `.m-coils`).
 - 데모 콘솔은 언어를 `localStorage['motorai-lang']`에 저장합니다. 같은 도메인에서 처음 방문한 사람에게는 이 사이트가 값을 `en`으로 넣어 영어 콘솔이 먼저 보이게 합니다 (`main.js`).
