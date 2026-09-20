@@ -15,6 +15,7 @@ assets/css/noscript.css  JS가 꺼진 브라우저용 보정
 assets/js/main.js        테마 토글, 연구 상세 모달, 데모 iframe, 스크롤 효과
 assets/img/profile.jpg   프로필 사진 (첫 화면 Hero 오른쪽)
 assets/img/research/     연구 그림 (*-thumb.jpg = 카드용 축소본)
+assets/img/logo-*.png    메뉴바 왼쪽 KAIST · SDL 로고 (연구실 PPT 템플릿에서 추출; KAIST는 라이트용 파랑 / 다크용 흰색 2종)
 assets/img/og.png        카톡/슬랙/링크드인 공유 미리보기 이미지
 favicon.svg, robots.txt, sitemap.xml, .nojekyll
 preview.bat, tools/serve.ps1   로컬 미리보기 서버 (Node/Python 불필요)

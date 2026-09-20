@@ -39,8 +39,8 @@
   <!-- NanumSquare (Bold / ExtraBold) is declared in style.css and served from jsDelivr -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <!-- Bump ?v= whenever style.css / main.js change, so browsers don't keep a stale cached copy -->
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=5"></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=6"></noscript>
 
   <script type="application/ld+json">
   {
@@ -93,10 +93,17 @@
 <!-- ───────────── Navigation ───────────── -->
 <header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top" aria-label="Jinseong Han — back to top">
-      <span class="brand__mark" aria-hidden="true">JH</span>
-      <span class="brand__name">Jinseong Han</span>
-    </a>
+    <!-- Affiliation marks: KAIST | Smart Design Lab (blue wordmark on light theme, white on dark) -->
+    <div class="logos">
+      <a class="logo logo--kaist" href="https://www.kaist.ac.kr/en/" target="_blank" rel="noopener" aria-label="KAIST">
+        <img class="on-light" src="assets/img/logo-kaist.png" width="392" height="112" alt="KAIST">
+        <img class="on-dark" src="assets/img/logo-kaist-white.png" width="332" height="94" alt="KAIST">
+      </a>
+      <span class="logos__sep" aria-hidden="true"></span>
+      <a class="logo logo--sdl" href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener" aria-label="Smart Design Lab">
+        <img src="assets/img/logo-sdl.png" width="350" height="128" alt="Smart Design Lab">
+      </a>
+    </div>
     <nav class="nav__links" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#research">Research</a>
@@ -714,6 +721,6 @@
   </article>
 </dialog>
 
-<script src="assets/js/main.js?v=5" defer></script>
+<script src="assets/js/main.js?v=6" defer></script>
 </body>
 </html>
