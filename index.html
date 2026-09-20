@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jinseong Han — AI for Multi-Physics Design of Electric Vehicles · KAIST</title>
+  <meta name="description" content="Jinseong Han is an M.S. student at the CCS Graduate School of Mobility, KAIST (Smart Design Lab). He researches multi-physics design for electric vehicles with AI: LLM multi-agent motor design optimization, FEA–AI hybrid surrogates, flow-field prediction and manufacturing-aware geometry.">
+  <meta name="author" content="Jinseong Han">
+  <meta name="theme-color" content="#f4f5fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#090c17" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://hanjinseong.github.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jinseong Han">
+  <meta property="og:title" content="Jinseong Han — AI for Multi-Physics Design of Electric Vehicles">
+  <meta property="og:description" content="M.S. student at KAIST (Smart Design Lab). LLM multi-agent motor design, FEA–AI hybrid optimization, multi-physics surrogates. Live demo inside.">
+  <meta property="og:url" content="https://hanjinseong.github.io/">
+  <meta property="og:image" content="https://hanjinseong.github.io/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Set the theme before first paint (saved choice → system preference) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jinseong Han",
+    "alternateName": "한진성",
+    "url": "https://hanjinseong.github.io/",
+    "jobTitle": "M.S. Student",
+    "email": "mailto:nethan1012@kaist.ac.kr",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Korea Advanced Institute of Science and Technology (KAIST)", "department": "CCS Graduate School of Mobility" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Dongguk University" },
+    "knowsAbout": ["Agentic design", "Multi-physics", "Electric motors", "IPMSM design optimization", "Surrogate modeling"],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=-iLoC9cAAAAJ",
+      "https://www.linkedin.com/in/jinseong-han-5a1766370/",
+      "https://github.com/hanjinseong"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ───────────── Icon sprite ───────────── -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-scholar" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></symbol>
+  <symbol id="i-pointer" viewBox="0 0 24 24"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ───────────── Navigation ───────────── -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="Jinseong Han — back to top">
+      <span class="brand__mark" aria-hidden="true">JH</span>
+      <span class="brand__name">Jinseong Han</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#research">Research</a>
+      <a href="#demo">Demo</a>
+      <a href="#publications"><span class="on-wide">Publications</span><span class="on-narrow">Papers</span></a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav__tools">
+      <a class="nav__mail" href="mailto:nethan1012@kaist.ac.kr">Contact</a>
+      <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg class="i i-moon"><use href="#i-moon"/></svg>
+        <svg class="i i-sun"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ───────────── Hero ───────────── -->
+  <section class="hero" id="top">
+    <div class="wrap hero__in">
+      <div class="hero__text">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>M.S. Student · CCS Graduate School of Mobility, KAIST</p>
+        <h1 class="hero__name">Jinseong Han <span class="hero__ko" lang="ko">한진성</span></h1>
+        <p class="hero__lead">
+          Researching <mark>multi-physics factors for electric vehicles</mark> based on <mark>artificial intelligence</mark> —
+          from LLM agents that automate motor design to neural surrogates for electromagnetics, vibration, flow and manufacturing.
+        </p>
+        <ul class="chips" aria-label="Research interests">
+          <li>Agentic design</li>
+          <li>Multi-physics</li>
+          <li>Electric motors</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#research">Explore research <svg class="i"><use href="#i-down"/></svg></a>
+          <a class="btn" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener"><svg class="i i--fill"><use href="#i-play"/></svg> Launch live demo</a>
+        </div>
+        <ul class="social" aria-label="Profiles and contact">
+          <li><a href="mailto:nethan1012@kaist.ac.kr"><svg class="i"><use href="#i-mail"/></svg><span>nethan1012@kaist.ac.kr</span></a></li>
+          <li><a href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener me"><svg class="i"><use href="#i-scholar"/></svg><span>Scholar</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jinseong-han-5a1766370/" target="_blank" rel="noopener me"><svg class="i"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+          <li><a href="https://github.com/hanjinseong" target="_blank" rel="noopener me"><svg class="i"><use href="#i-github"/></svg><span>GitHub</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Signature visual: an 8-pole / 48-slot IPMSM cross-section. The rotor turns in sync with the rotating stator field. -->
+      <div class="motor" id="motor">
+        <svg class="motor__svg" viewBox="-322 -322 644 644" role="img" aria-label="Animated cross-section of an interior permanent magnet synchronous motor">
+          <defs>
+            <path id="m-slot" d="M206 -1.6H212V-5.2L262 -8.2A8.2 8.2 0 0 1 262 8.2L212 5.2V1.6H206"/>
+            <g id="m-coil"><path d="M216 -3.3L237 -4.5V4.5L216 3.3Z"/><path d="M241 -4.8L261 -5.9A5.9 5.9 0 0 1 261 5.9L241 4.8Z"/></g>
+            <g id="m-pole">
+              <rect class="m-pocket" x="-29" y="-5.5" width="58" height="11" rx="3" transform="translate(163.1 30.3) rotate(58.73)"/>
+              <rect class="m-pocket" x="-29" y="-5.5" width="58" height="11" rx="3" transform="translate(163.1 -30.3) rotate(-58.73)"/>
+              <rect class="m-pm" x="-22" y="-4" width="44" height="8" rx="1" transform="translate(163.1 30.3) rotate(58.73)"/>
+              <rect class="m-pm" x="-22" y="-4" width="44" height="8" rx="1" transform="translate(163.1 -30.3) rotate(-58.73)"/>
+              <circle class="m-pocket" cx="127.5" cy="52.8" r="5.5"/>
+            </g>
+          </defs>
+          <g class="m-axes"><path d="M-318 0H318M0 -318V318"/></g>
+          <g class="m-stator">
+            <circle class="m-iron" r="296"/>
+            <circle class="m-bore" r="206"/>
+            <g class="m-slots"><use href="#m-slot" transform="rotate(3.75)"/><use href="#m-slot" transform="rotate(11.25)"/><use href="#m-slot" transform="rotate(18.75)"/><use href="#m-slot" transform="rotate(26.25)"/><use href="#m-slot" transform="rotate(33.75)"/><use href="#m-slot" transform="rotate(41.25)"/><use href="#m-slot" transform="rotate(48.75)"/><use href="#m-slot" transform="rotate(56.25)"/><use href="#m-slot" transform="rotate(63.75)"/><use href="#m-slot" transform="rotate(71.25)"/><use href="#m-slot" transform="rotate(78.75)"/><use href="#m-slot" transform="rotate(86.25)"/><use href="#m-slot" transform="rotate(93.75)"/><use href="#m-slot" transform="rotate(101.25)"/><use href="#m-slot" transform="rotate(108.75)"/><use href="#m-slot" transform="rotate(116.25)"/><use href="#m-slot" transform="rotate(123.75)"/><use href="#m-slot" transform="rotate(131.25)"/><use href="#m-slot" transform="rotate(138.75)"/><use href="#m-slot" transform="rotate(146.25)"/><use href="#m-slot" transform="rotate(153.75)"/><use href="#m-slot" transform="rotate(161.25)"/><use href="#m-slot" transform="rotate(168.75)"/><use href="#m-slot" transform="rotate(176.25)"/><use href="#m-slot" transform="rotate(183.75)"/><use href="#m-slot" transform="rotate(191.25)"/><use href="#m-slot" transform="rotate(198.75)"/><use href="#m-slot" transform="rotate(206.25)"/><use href="#m-slot" transform="rotate(213.75)"/><use href="#m-slot" transform="rotate(221.25)"/><use href="#m-slot" transform="rotate(228.75)"/><use href="#m-slot" transform="rotate(236.25)"/><use href="#m-slot" transform="rotate(243.75)"/><use href="#m-slot" transform="rotate(251.25)"/><use href="#m-slot" transform="rotate(258.75)"/><use href="#m-slot" transform="rotate(266.25)"/><use href="#m-slot" transform="rotate(273.75)"/><use href="#m-slot" transform="rotate(281.25)"/><use href="#m-slot" transform="rotate(288.75)"/><use href="#m-slot" transform="rotate(296.25)"/><use href="#m-slot" transform="rotate(303.75)"/><use href="#m-slot" transform="rotate(311.25)"/><use href="#m-slot" transform="rotate(318.75)"/><use href="#m-slot" transform="rotate(326.25)"/><use href="#m-slot" transform="rotate(333.75)"/><use href="#m-slot" transform="rotate(341.25)"/><use href="#m-slot" transform="rotate(348.75)"/><use href="#m-slot" transform="rotate(356.25)"/></g>
+            <g class="m-coils c0"><use href="#m-coil" transform="rotate(3.75)"/><use href="#m-coil" transform="rotate(11.25)"/><use href="#m-coil" transform="rotate(48.75)"/><use href="#m-coil" transform="rotate(56.25)"/><use href="#m-coil" transform="rotate(93.75)"/><use href="#m-coil" transform="rotate(101.25)"/><use href="#m-coil" transform="rotate(138.75)"/><use href="#m-coil" transform="rotate(146.25)"/><use href="#m-coil" transform="rotate(183.75)"/><use href="#m-coil" transform="rotate(191.25)"/><use href="#m-coil" transform="rotate(228.75)"/><use href="#m-coil" transform="rotate(236.25)"/><use href="#m-coil" transform="rotate(273.75)"/><use href="#m-coil" transform="rotate(281.25)"/><use href="#m-coil" transform="rotate(318.75)"/><use href="#m-coil" transform="rotate(326.25)"/></g>
+            <g class="m-coils c1"><use href="#m-coil" transform="rotate(18.75)"/><use href="#m-coil" transform="rotate(26.25)"/><use href="#m-coil" transform="rotate(63.75)"/><use href="#m-coil" transform="rotate(71.25)"/><use href="#m-coil" transform="rotate(108.75)"/><use href="#m-coil" transform="rotate(116.25)"/><use href="#m-coil" transform="rotate(153.75)"/><use href="#m-coil" transform="rotate(161.25)"/><use href="#m-coil" transform="rotate(198.75)"/><use href="#m-coil" transform="rotate(206.25)"/><use href="#m-coil" transform="rotate(243.75)"/><use href="#m-coil" transform="rotate(251.25)"/><use href="#m-coil" transform="rotate(288.75)"/><use href="#m-coil" transform="rotate(296.25)"/><use href="#m-coil" transform="rotate(333.75)"/><use href="#m-coil" transform="rotate(341.25)"/></g>
+            <g class="m-coils c2"><use href="#m-coil" transform="rotate(33.75)"/><use href="#m-coil" transform="rotate(41.25)"/><use href="#m-coil" transform="rotate(78.75)"/><use href="#m-coil" transform="rotate(86.25)"/><use href="#m-coil" transform="rotate(123.75)"/><use href="#m-coil" transform="rotate(131.25)"/><use href="#m-coil" transform="rotate(168.75)"/><use href="#m-coil" transform="rotate(176.25)"/><use href="#m-coil" transform="rotate(213.75)"/><use href="#m-coil" transform="rotate(221.25)"/><use href="#m-coil" transform="rotate(258.75)"/><use href="#m-coil" transform="rotate(266.25)"/><use href="#m-coil" transform="rotate(303.75)"/><use href="#m-coil" transform="rotate(311.25)"/><use href="#m-coil" transform="rotate(348.75)"/><use href="#m-coil" transform="rotate(356.25)"/></g>
+          </g>
+          <g class="m-rotor">
+            <circle class="m-iron m-iron--rotor" r="199"/>
+            <g class="m-poles"><use href="#m-pole" transform="rotate(0)"/><use href="#m-pole" transform="rotate(45)"/><use href="#m-pole" transform="rotate(90)"/><use href="#m-pole" transform="rotate(135)"/><use href="#m-pole" transform="rotate(180)"/><use href="#m-pole" transform="rotate(225)"/><use href="#m-pole" transform="rotate(270)"/><use href="#m-pole" transform="rotate(315)"/></g>
+            <circle class="m-shaft" r="122"/>
+          </g>
+          <g class="m-notes">
+            <polyline points="176,-226 226,-300 320,-300"/><circle cx="176" cy="-226" r="3"/>
+            <text x="320" y="-307" text-anchor="end">STATOR · 48 SLOTS</text>
+            <polyline points="-112,143 -226,300 -320,300"/><circle cx="-112" cy="143" r="3"/>
+            <text x="-320" y="316" text-anchor="start">ROTOR · 8 POLES · V-SHAPE PM</text>
+          </g>
+        </svg>
+        <div class="motor__core">
+          <span class="motor__mono" aria-hidden="true">JH</span>
+          <img src="assets/img/profile.jpg" width="400" height="400" alt="Portrait of Jinseong Han" decoding="async"
+               onerror="this.remove()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="wrap">
+      <ul class="highlights" aria-label="Highlights">
+        <li>
+          <a href="#awards">
+            <span class="hl__icon hl__icon--amber"><svg class="i"><use href="#i-trophy"/></svg></span>
+            <span class="hl__text"><small>Award · 2026</small><b>Paper of Distinction — ASME IDETC/CIE, Design Automation Conference</b></span>
+            <svg class="i hl__go"><use href="#i-right"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/2606.09037" target="_blank" rel="noopener">
+            <span class="hl__icon"><svg class="i"><use href="#i-file"/></svg></span>
+            <span class="hl__text"><small>Preprint · arXiv:2606.09037</small><b>A multi-agent system for motor design optimization via an FEA–AI hybrid approach</b></span>
+            <svg class="i hl__go"><use href="#i-up-right"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#demo">
+            <span class="hl__icon hl__icon--green"><svg class="i i--fill"><use href="#i-play"/></svg></span>
+            <span class="hl__text"><small>Live demo</small><b>MotorAI — watch three LLM agents design an IPMSM in your browser</b></span>
+            <svg class="i hl__go"><use href="#i-right"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ───────────── Research ───────────── -->
+  <section class="sec" id="research">
+    <div class="wrap">
+      <header class="sec__head">
+        <span class="sec__no">01</span>
+        <h2>Research</h2>
+        <p>AI that sets up, runs and accelerates engineering design — across motors, flow fields and manufacturable geometry. Select a topic for figures and details.</p>
+      </header>
+
+      <!-- Featured -->
+      <article class="feature reveal">
+        <a class="feature__fig paper" href="#r-parametric" data-modal="r-parametric" aria-label="Open details: Multi-Agent based Parametric Motor Design Optimization">
+          <img src="assets/img/research/parametric-framework-thumb.jpg" width="1400" height="751" alt="Framework overview: agents for problem definition, AI surrogate training, and optimization with an FEA–AI hybrid model" decoding="async">
+        </a>
+        <div class="feature__body">
+          <ul class="badges">
+            <li class="badge badge--amber"><svg class="i"><use href="#i-trophy"/></svg>Paper of Distinction · IDETC 2026</li>
+            <li class="badge">arXiv</li>
+            <li class="badge badge--green"><span class="pulse" aria-hidden="true"></span>Live demo</li>
+          </ul>
+          <h3><span class="no">01</span> Multi-Agent based Parametric Motor Design Optimization</h3>
+          <p>LLM agents define the optimization problem, repair the design space, train an uncertainty-aware surrogate and run an FEA–AI hybrid optimizer that calls FEA only where the AI is unsure — end to end.</p>
+          <dl class="stats">
+            <div><dt>28 → 84<small>%</small></dt><dd>valid-geometry sampling after agentic design-space repair</dd></div>
+            <div><dt>−44<small>%</small></dt><dd>iron loss vs. FEA-only search, same FEA budget (up to)</dd></div>
+            <div><dt>−52–55<small>%</small></dt><dd>compute time, keeping 90–92% of FEA-only hypervolume</dd></div>
+          </dl>
+          <div class="feature__cta">
+            <a class="btn btn--primary btn--sm" href="#r-parametric" data-modal="r-parametric">Figures &amp; details <svg class="i"><use href="#i-right"/></svg></a>
+            <a class="btn btn--sm" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Live demo <svg class="i"><use href="#i-up-right"/></svg></a>
+            <a class="btn btn--sm" href="https://arxiv.org/abs/2606.09037" target="_blank" rel="noopener">arXiv <svg class="i"><use href="#i-up-right"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Topic cards -->
+      <div class="cards">
+        <a class="card reveal" href="#r-nonparametric" data-modal="r-nonparametric">
+          <span class="card__fig paper"><img src="assets/img/research/nonparam-framework-thumb.jpg" width="960" height="543" alt="Design, generation and evaluation agents for non-parametric motor design" loading="lazy" decoding="async"></span>
+          <span class="card__body">
+            <span class="no">02</span>
+            <b class="card__title">Multi-Agent based Non-parametric Motor Design Optimization</b>
+            <span class="card__desc">Agents generate and edit rotor images beyond fixed parameters, then turn them into STEP geometry for FEA–AI evaluation.</span>
+            <span class="card__tags">Generative design · LLM agents</span>
+          </span>
+        </a>
+        <a class="card reveal" href="#r-flow" data-modal="r-flow">
+          <span class="card__fig paper"><img src="assets/img/research/flow-prediction.jpg" width="1064" height="497" alt="Ground-truth and predicted velocity fields around a multi-cylinder array at three time instants" loading="lazy" decoding="async"></span>
+          <span class="card__body">
+            <span class="no">03</span>
+            <b class="card__title">Spatio-Temporal Multi-cylinder Flow Prediction</b>
+            <span class="card__desc">A coordinate-based network with positional time encoding predicts unsteady flow fields around multi-cylinder arrays.</span>
+            <span class="card__tags">CFD surrogate · Neural fields</span>
+          </span>
+        </a>
+        <a class="card reveal" href="#r-cnc" data-modal="r-cnc">
+          <span class="card__fig paper"><img src="assets/img/research/cnc-projection-thumb.jpg" width="960" height="448" alt="A 3D bracket aligned to CNC axes and its three binary projections" loading="lazy" decoding="async"></span>
+          <span class="card__body">
+            <span class="no">04</span>
+            <b class="card__title">Manufacturing-Aware 3D Geometry Post-Processing for 3-Axis CNC Milling</b>
+            <span class="card__desc">Depth-map projections turn free-form 3D geometry into CAD models that a 3-axis CNC mill can machine.</span>
+            <span class="card__tags">Manufacturability · CAD reconstruction</span>
+          </span>
+        </a>
+        <a class="card reveal" href="#r-vibration" data-modal="r-vibration">
+          <span class="card__fig paper"><img src="assets/img/research/vibration-thumb.jpg" width="960" height="510" alt="Motor geometry mapped to a vibration response surface with a conditional VAE" loading="lazy" decoding="async"></span>
+          <span class="card__body">
+            <span class="no">05</span>
+            <b class="card__title">Electromagnetic–Vibration Multiphysics Prediction of IPMSM</b>
+            <span class="card__desc">A conditional VAE with 2D→3D parameter transfer predicts motor vibration response from design variables.</span>
+            <span class="card__tags">Multi-physics · Transfer learning</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── Live demo ───────────── -->
+  <section class="demo" id="demo">
+    <div class="wrap demo__in">
+      <div class="demo__text">
+        <header class="sec__head sec__head--stack">
+          <span class="sec__no">02</span>
+          <h2>Live demo</h2>
+        </header>
+        <p class="demo__lead"><b>MotorAI</b> is an interactive console for the multi-agent IPMSM optimization framework. Step through the pipeline and see where the AI is trusted — and where FEA is called in.</p>
+        <ol class="agents">
+          <li>
+            <span class="agents__icon a1"><svg class="i"><use href="#i-chat"/></svg></span>
+            <div><b>Design agent</b><span>Turns a chat into a structured problem: objective, design variables, constraints.</span></div>
+          </li>
+          <li>
+            <span class="agents__icon a2"><svg class="i"><use href="#i-chart"/></svg></span>
+            <div><b>Training agent</b><span>Resamples failed and sparse regions, then trains a UQ-aware deep-ensemble surrogate.</span></div>
+          </li>
+          <li>
+            <span class="agents__icon a3"><svg class="i"><use href="#i-sliders"/></svg></span>
+            <div><b>Optimization agent</b><span>An LLM sets the switching threshold τ that routes each evaluation to FEA or AI.</span></div>
+          </li>
+        </ol>
+        <div class="demo__cta">
+          <a class="btn btn--light" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open full demo <svg class="i"><use href="#i-up-right"/></svg></a>
+          <a class="btn btn--ghost" href="https://github.com/hanjinseong/ipmsm-design" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg> Source</a>
+          <span class="demo__note">Runs in the browser · KO / EN</span>
+        </div>
+      </div>
+
+      <div class="browser reveal" id="demo-frame" data-src="https://hanjinseong.github.io/ipmsm-design/">
+        <div class="browser__bar">
+          <span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="browser__url">hanjinseong.github.io/ipmsm-design</span>
+          <a class="browser__open" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener" aria-label="Open the demo in a new tab"><svg class="i"><use href="#i-up-right"/></svg></a>
+        </div>
+        <div class="browser__view">
+          <div class="browser__placeholder" aria-hidden="true"><span class="spinner"></span>Loading live preview…</div>
+          <!-- iframe is injected by main.js when this section scrolls into view -->
+          <button class="browser__shield" type="button"><span><svg class="i"><use href="#i-pointer"/></svg> Click to interact</span></button>
+          <noscript><a class="browser__fallback" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open the live demo ↗</a></noscript>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── Publications ───────────── -->
+  <section class="sec" id="publications">
+    <div class="wrap">
+      <header class="sec__head">
+        <span class="sec__no">03</span>
+        <h2>Publications</h2>
+        <p>Journal and conference papers. Full list on <a href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+      </header>
+
+      <div class="pubs">
+        <!-- To add a paper: copy one <li class="pub"> … </li> block into the right group and edit it. -->
+        <section class="pubgroup" aria-labelledby="pg-journal">
+          <h3 id="pg-journal">International journal</h3>
+          <ol class="publist">
+            <li class="pub">
+              <span class="pub__year">2026</span>
+              <div class="pub__main">
+                <p class="pub__title">A LLM-Based Multi-Agent System for Motor Design Optimization Using an Uncertainty-Aware FEA-AI Hybrid Approach</p>
+                <p class="pub__authors"><b>Han, J.</b>, Yang, S.*, and Kang, N.**</p>
+                <p class="pub__venue">arXiv:2606.09037 <span class="tag tag--muted">Under review</span>
+                  <a class="pub__link" href="https://arxiv.org/abs/2606.09037" target="_blank" rel="noopener">arXiv <svg class="i"><use href="#i-up-right"/></svg></a>
+                  <a class="pub__link" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Demo <svg class="i"><use href="#i-up-right"/></svg></a>
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="pubgroup" aria-labelledby="pg-intl">
+          <h3 id="pg-intl">International conference</h3>
+          <ol class="publist">
+            <li class="pub">
+              <span class="pub__year">2026</span>
+              <div class="pub__main">
+                <p class="pub__title">A Multi-Agent System for IPMSM Design Optimization via an FEA-AI Hybrid Approach</p>
+                <p class="pub__authors"><b>Han, J.</b>, Yang, S., and Kang, N.*</p>
+                <p class="pub__venue">ASME 2026 International Design Engineering Technical Conferences &amp; Computers and Information in Engineering Conference (IDETC/CIE 2026), DETC2026-186939
+                  <span class="tag tag--amber"><svg class="i"><use href="#i-trophy"/></svg>Paper of Distinction</span>
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="pubgroup" aria-labelledby="pg-dom">
+          <h3 id="pg-dom">Domestic conference</h3>
+          <ol class="publist" id="publist-domestic">
+            <li class="pub">
+              <span class="pub__year">2026</span>
+              <div class="pub__main">
+                <p class="pub__title">A Multi-Agent System-Based Non-Parametric Image Generation for IPMSM Design Optimization</p>
+                <p class="pub__authors"><b>Han, J.</b>, Yang, S., and Kang, N.*</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub__year">2025</span>
+              <div class="pub__main">
+                <p class="pub__title">IPMSM Shape Optimization based FEA-AI Hybrid Model using LLM agents</p>
+                <p class="pub__authors"><b>Han, J.</b>, Yang, S., and Kang, N.*</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub__year">2025</span>
+              <div class="pub__main">
+                <p class="pub__title">Time-Series Flow Field Prediction of Multi-Cylinder using Spatio-Temporal Coordinate-based Neural Network</p>
+                <p class="pub__authors"><b>Han, J.</b>, Kim, S., Kim, S., Yang, S., Cho, B., Song, C., Kang, J., Song, M., and Kang, N.*</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+              </div>
+            </li>
+            <li class="pub" data-more>
+              <span class="pub__year">2026</span>
+              <div class="pub__main">
+                <p class="pub__title">Continuous Flow for Discrete Topology Generative Design Editing of IPMSM Rotors via VQ-VFM</p>
+                <p class="pub__authors">Jeong, L., <b>Han, J.</b>, …, Kang, N.*</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+              </div>
+            </li>
+            <li class="pub" data-more>
+              <span class="pub__year">2025</span>
+              <div class="pub__main">
+                <p class="pub__title">Manufacturing-Aware 3D Geometry Post-Processing Framework via Depth Maps for 3-Axis CNC Milling</p>
+                <p class="pub__authors">Kim, S., <b>Han, J.</b>, Kim, S., Cho, Y., and Kang, N.*</p>
+                <p class="pub__venue">Domestic conference</p>
+              </div>
+            </li>
+            <li class="pub" data-more>
+              <span class="pub__year">2025</span>
+              <div class="pub__main">
+                <p class="pub__title">Transformer-based Framework for Large-Scale 3D Flow Prediction</p>
+                <p class="pub__authors">Kim, S., Yang, S., Kim, S., <b>Han, J.</b>, and Kang, N.*</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+              </div>
+            </li>
+            <li class="pub" data-more>
+              <span class="pub__year">2025</span>
+              <div class="pub__main">
+                <p class="pub__title">Spatio-Temporal Flow Field Prediction of Variable Multi-Cylinder Configurations via DeepONet</p>
+                <p class="pub__authors">Kim, S., Yang, S., Kim, S., <b>Han, J.</b>, Cho, B., Song, C., Kang, J., and Kang, N.*</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+              </div>
+            </li>
+          </ol>
+          <button class="more" id="pub-more" type="button" aria-expanded="false" aria-controls="publist-domestic" hidden>Show all 7 <svg class="i"><use href="#i-down"/></svg></button>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── About ───────────── -->
+  <section class="sec sec--tint" id="about">
+    <div class="wrap">
+      <header class="sec__head">
+        <span class="sec__no">04</span>
+        <h2>About</h2>
+        <p>I am an M.S. student at the CCS Graduate School of Mobility, KAIST, working in the <a href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener">Smart Design Lab</a> with Prof. Namwoo Kang. My interests are agentic design, multi-physics and electric motors.</p>
+      </header>
+
+      <div class="cv">
+        <section class="cvcard cvcard--wide reveal" aria-labelledby="cv-edu">
+          <h3 id="cv-edu">Education</h3>
+          <ol class="timeline">
+            <li>
+              <time>Jan. 2025 – Present</time>
+              <b>Korea Advanced Institute of Science and Technology (KAIST)</b>
+              <span>M.S. in CCS Graduate School of Mobility · Adviser: Prof. Namwoo Kang</span>
+              <small>Daejeon, South Korea</small>
+            </li>
+            <li>
+              <time>Mar. 2019 – Jan. 2025</time>
+              <b>Dongguk University</b>
+              <span>B.S. in Mechanical Engineering · Adviser: Prof. Soohwan Park</span>
+              <small>Seoul, South Korea</small>
+            </li>
+          </ol>
+        </section>
+
+        <section class="cvcard cvcard--wide reveal" aria-labelledby="cv-exp">
+          <h3 id="cv-exp">Experience</h3>
+          <ol class="timeline">
+            <li>
+              <time>Jan. 2025 – Present</time>
+              <b>Graduate Researcher (M.S. Candidate)</b>
+              <span>Smart Design Lab, KAIST</span>
+              <small>Daejeon, South Korea</small>
+            </li>
+            <li>
+              <time>Oct. 2023 – Oct. 2024</time>
+              <b>Student Researcher</b>
+              <span>Electrified Propulsion Lab.</span>
+              <small>Seoul, South Korea</small>
+            </li>
+          </ol>
+        </section>
+
+        <section class="cvcard cvcard--award reveal" id="awards" aria-labelledby="cv-awd">
+          <h3 id="cv-awd">Awards</h3>
+          <div class="award">
+            <b>Paper of Distinction Award</b>
+            <span>Design Automation Conference (DAC)<br>ASME IDETC/CIE 2026</span>
+            <small>For “A Multi-Agent System for IPMSM Design Optimization via an FEA-AI Hybrid Approach”</small>
+          </div>
+          <svg class="i award__mark" aria-hidden="true"><use href="#i-trophy"/></svg>
+        </section>
+
+        <section class="cvcard reveal" aria-labelledby="cv-prj">
+          <h3 id="cv-prj">Projects</h3>
+          <ul class="cvlist">
+            <li>
+              <b>Hyundai Motor Group</b>
+              <span>Development of AI-Based Electromagnetic Analysis Models and Performance Prediction for IPMSM</span>
+              <small>Jun. 2025 – Jun. 2026</small>
+            </li>
+            <li>
+              <b>Korea Atomic Energy Research Institute (KAERI)</b>
+              <span>Development of AI-based Simulation Models for Predicting Three-Dimensional Unsteady Flow Fields</span>
+              <small>Jan. 2025 – May 2026</small>
+            </li>
+          </ul>
+        </section>
+
+        <section class="cvcard reveal" aria-labelledby="cv-pat">
+          <h3 id="cv-pat">Patents</h3>
+          <ul class="cvlist">
+            <li>
+              <span>Method for Building Artificial Intelligence Model for Optimization of Design Shape and Electronic Device and System Implementing Such Method</span>
+              <small>KR Application No. 10-2026-0102200</small>
+            </li>
+            <li>
+              <span>Method for Automatic Optimization of Design Shape Using Multi-Agent and Electronic Device and System Implementing Such Method</span>
+              <small>KR Application No. 10-2026-0102201</small>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ───────────── Footer ───────────── -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <p class="foot__name">Jinseong Han</p>
+      <p>Smart Design Lab · CCS Graduate School of Mobility, KAIST<br>Daejeon, South Korea · <a href="mailto:nethan1012@kaist.ac.kr">nethan1012@kaist.ac.kr</a></p>
+    </div>
+    <ul class="social social--foot" aria-label="Profiles">
+      <li><a href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="i"><use href="#i-scholar"/></svg></a></li>
+      <li><a href="https://www.linkedin.com/in/jinseong-han-5a1766370/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-linkedin"/></svg></a></li>
+      <li><a href="https://github.com/hanjinseong" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a></li>
+      <li><a href="mailto:nethan1012@kaist.ac.kr" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a></li>
+    </ul>
+    <p class="foot__legal">© 2026 Jinseong Han. All rights reserved. <span>Last updated: Sep. 2026</span></p>
+  </div>
+</footer>
+
+<!-- ───────────── Research detail dialogs ───────────── -->
+<dialog class="modal" id="r-parametric" aria-labelledby="r-parametric-t">
+  <article class="modal__in">
+    <header class="modal__head">
+      <div>
+        <p class="eyebrow">Research 01</p>
+        <h3 id="r-parametric-t">Multi-Agent based Parametric Motor Design Optimization</h3>
+        <ul class="badges">
+          <li class="badge badge--amber"><svg class="i"><use href="#i-trophy"/></svg>Paper of Distinction · IDETC 2026</li>
+          <li class="badge">LLM agents</li><li class="badge">FEA–AI hybrid</li><li class="badge">Uncertainty</li><li class="badge">IPMSM</li>
+        </ul>
+      </div>
+      <form method="dialog"><button class="iconbtn" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></form>
+    </header>
+    <div class="modal__body">
+      <div class="prose">
+        <p>Interior permanent magnet synchronous motor (IPMSM) design requires balancing conflicting objectives and multi-physics constraints, while modern optimization workflows face three bottlenecks: manual problem setup, high finite element analysis (FEA) cost, and unreliable surrogate-based search in sparse or out-of-distribution regions. To address these limitations, we propose an end-to-end automated IPMSM design optimization framework that integrates retrieval-augmented generation (RAG) for structured problem definition with an uncertainty-aware FEA-AI hybrid optimization pipeline.</p>
+      </div>
+      <dl class="stats stats--wide">
+        <div><dt>&lt;50 → 67–80<small>%</small></dt><dd>answer accuracy on motor-design problems with RAG (Design agent)</dd></div>
+        <div><dt>28 → 84<small>%</small></dt><dd>geometry-sampling success after the Training agent repairs the design space</dd></div>
+        <div><dt>−44<small>%</small></dt><dd>iron loss (up to) vs. FEA-only search under the same FEA budget</dd></div>
+        <div><dt>+22.5<small>%</small></dt><dd>hypervolume in multi-objective optimization, same FEA budget</dd></div>
+        <div><dt>−52–55<small>%</small></dt><dd>computation time while retaining 90–92% of FEA-only hypervolume</dd></div>
+        <div><dt>−5.8<small>%</small></dt><dd>iron loss with the adaptive uncertainty threshold vs. a fixed one</dd></div>
+      </dl>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/parametric-framework.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/parametric-framework.jpg" width="2600" height="1395" alt="Three-step framework: agent-based problem definition, AI surrogate training with FEA and training agents, and GA optimization using an FEA–AI hybrid model" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 1</b> Agent-based IPMSM design optimization — problem definition, AI surrogate training, and optimization with the FEA–AI hybrid model.</figcaption>
+      </figure>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/parametric-design-space.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/parametric-design-space.jpg" width="1812" height="617" alt="IPMSM cross-section annotated with design variables x1 to x12 and a table of sampled designs" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 2</b> IPMSM design space — geometric design variables and sampled design points.</figcaption>
+      </figure>
+      <div class="refs">
+        <h4>Related publications</h4>
+        <ul>
+          <li>Han, J., Yang, S., &amp; Kang, N. (2026). A Multi-Agent System for IPMSM Design Optimization via an FEA-AI Hybrid Approach. <i>arXiv preprint</i> arXiv:2606.09037.</li>
+          <li>Han, J., Yang, S., and Kang, N.* (2026). A Multi-Agent System for IPMSM Design Optimization via an FEA-AI Hybrid Approach. ASME IDETC/CIE 2026, DETC2026-186939. <span class="tag tag--amber">Paper of Distinction</span></li>
+          <li>Han, J., Yang, S., and Kang, N.* (2025). IPMSM Shape Optimization based FEA-AI Hybrid Model using LLM agents. KSME.</li>
+        </ul>
+      </div>
+      <div class="modal__cta">
+        <a class="btn btn--primary btn--sm" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener"><svg class="i i--fill"><use href="#i-play"/></svg> Live demo</a>
+        <a class="btn btn--sm" href="https://arxiv.org/abs/2606.09037" target="_blank" rel="noopener">arXiv:2606.09037 <svg class="i"><use href="#i-up-right"/></svg></a>
+      </div>
+    </div>
+  </article>
+</dialog>
+
+<dialog class="modal" id="r-nonparametric" aria-labelledby="r-nonparametric-t">
+  <article class="modal__in">
+    <header class="modal__head">
+      <div>
+        <p class="eyebrow">Research 02</p>
+        <h3 id="r-nonparametric-t">Multi-Agent based Non-parametric Motor Design Optimization</h3>
+        <ul class="badges"><li class="badge">Generative design</li><li class="badge">LLM agents</li><li class="badge">Image → STEP</li><li class="badge">IPMSM</li></ul>
+      </div>
+      <form method="dialog"><button class="iconbtn" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></form>
+    </header>
+    <div class="modal__body">
+      <div class="prose">
+        <p>Moving beyond a fixed set of design parameters, this work lets agents explore motor shapes directly as images. A <b>design agent</b> sets up the problem from a reference image, objective functions and the design space; a <b>generation agent</b> creates rotor images, filters them with vector embeddings and geometric features, and edits its own prompts through an LLM that analyzes performance transitions; an <b>evaluation agent</b> converts each image to STEP geometry and scores it with the uncertainty-aware FEA–AI hybrid model.</p>
+      </div>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/nonparam-framework.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/nonparam-framework.jpg" width="2000" height="1130" alt="Design agent, generation agent and evaluation agent pipeline for non-parametric motor design" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 1</b> Multi-agent based IPMSM design — design, generation and evaluation agents.</figcaption>
+      </figure>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/nonparam-editing.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/nonparam-editing.jpg" width="1897" height="543" alt="Baseline motor geometry and four edited non-parametric rotor images" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 2</b> Non-parametric image editing — from the baseline geometry to edited 2D rotor images.</figcaption>
+      </figure>
+      <div class="refs">
+        <h4>Related publication</h4>
+        <ul>
+          <li>Han, J., Yang, S., and Kang, N.* (2026). A Multi-Agent System-Based Non-Parametric Image Generation for IPMSM Design Optimization. KSME.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</dialog>
+
+<dialog class="modal" id="r-flow" aria-labelledby="r-flow-t">
+  <article class="modal__in">
+    <header class="modal__head">
+      <div>
+        <p class="eyebrow">Research 03</p>
+        <h3 id="r-flow-t">Spatio-Temporal Multi-cylinder Flow Prediction</h3>
+        <ul class="badges"><li class="badge">CFD surrogate</li><li class="badge">Coordinate-based network</li><li class="badge">Positional encoding</li></ul>
+      </div>
+      <form method="dialog"><button class="iconbtn" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></form>
+    </header>
+    <div class="modal__body">
+      <div class="prose">
+        <p>A spatio-temporal coordinate-based neural network predicts time-series flow fields around multi-cylinder arrays. Time values are embedded with sinusoidal positional encoding, giving the network a rich representation of time, and the predicted velocity-magnitude fields are compared with the CFD ground truth at several instants of the unsteady flow.</p>
+      </div>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/flow-encoding.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/flow-encoding.jpg" width="1403" height="583" alt="Time values embedded into a positional-encoding time vector using sine and cosine functions" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 1</b> Positional encoding of time values into a PE time vector.</figcaption>
+      </figure>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/flow-prediction.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/flow-prediction.jpg" width="1064" height="497" alt="Ground truth and predicted velocity magnitude at 13.15, 22.03 and 37.45 seconds" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 2</b> Ground truth vs. predicted velocity magnitude at 13.15 s, 22.03 s and 37.45 s.</figcaption>
+      </figure>
+      <div class="refs">
+        <h4>Related publications</h4>
+        <ul>
+          <li>Han, J., Kim, S., Kim, S., Yang, S., Cho, B., Song, C., Kang, J., Song, M., and Kang, N.* (2025). Time-Series Flow Field Prediction of Multi-Cylinder using Spatio-Temporal Coordinate-based Neural Network. KSME.</li>
+          <li>Kim, S., Yang, S., Kim, S., Han, J., Cho, B., Song, C., Kang, J., and Kang, N.* (2025). Spatio-Temporal Flow Field Prediction of Variable Multi-Cylinder Configurations via DeepONet. KSME.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</dialog>
+
+<dialog class="modal" id="r-cnc" aria-labelledby="r-cnc-t">
+  <article class="modal__in">
+    <header class="modal__head">
+      <div>
+        <p class="eyebrow">Research 04</p>
+        <h3 id="r-cnc-t">Manufacturing-Aware 3D Geometry Post-Processing Framework via Depth Maps for 3-Axis CNC Milling</h3>
+        <ul class="badges"><li class="badge">Manufacturability</li><li class="badge">CAD reconstruction</li><li class="badge">3-axis CNC</li></ul>
+      </div>
+      <form method="dialog"><button class="iconbtn" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></form>
+    </header>
+    <div class="modal__body">
+      <div class="prose">
+        <p>A post-processing framework that turns free-form 3D geometry into shapes a 3-axis CNC mill can actually machine, in three steps: <b>(1)</b> project the geometry along the three fixed machining axes and extract binary contour maps; <b>(2)</b> parameterize the 2D outlines with SDF-based contour smoothing, polyline simplification and line–fillet fitting; <b>(3)</b> reconstruct the CAD model with Boolean subtraction and refine its parameters with IoU-based optimization.</p>
+      </div>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/cnc-framework.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/cnc-framework.jpg" width="2000" height="559" alt="Three-step framework: 2D projection contour extraction, 2D outline parameterization, 3D reconstruction and shape optimization" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 1</b> Framework — from a raw 3D geometry to a machinable CAD model.</figcaption>
+      </figure>
+      <figure class="fig">
+        <a class="paper" href="assets/img/research/cnc-projection.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/cnc-projection.jpg" width="2000" height="934" alt="3D geometry aligned to the axes of a 3-axis CNC machine and its binary projections along X, Y and Z" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 2</b> 2D–3D optimization — axis alignment for 3-view modeling and the resulting 2D binary projections.</figcaption>
+      </figure>
+      <div class="refs">
+        <h4>Related publication</h4>
+        <ul>
+          <li>Kim, S., Han, J., Kim, S., Cho, Y., and Kang, N.* (2025). Manufacturing-Aware 3D Geometry Post-Processing Framework via Depth Maps for 3-Axis CNC Milling.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</dialog>
+
+<dialog class="modal" id="r-vibration" aria-labelledby="r-vibration-t">
+  <article class="modal__in">
+    <header class="modal__head">
+      <div>
+        <p class="eyebrow">Research 05</p>
+        <h3 id="r-vibration-t">Electromagnetic–Vibration Multiphysics Prediction of IPMSM</h3>
+        <ul class="badges"><li class="badge">Multi-physics</li><li class="badge">Conditional VAE</li><li class="badge">2D → 3D transfer learning</li></ul>
+      </div>
+      <form method="dialog"><button class="iconbtn" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></form>
+    </header>
+    <div class="modal__body">
+      <div class="prose">
+        <p>A generative surrogate that maps IPMSM design variables to the motor's electromagnetic–vibration response. A conditional variational autoencoder (CVAE) is first trained on a 2D analysis dataset; its encoder and decoder parameters are then transferred to a second stage that learns 3D analysis results, conditioned on the same design variables.</p>
+      </div>
+      <figure class="fig fig--narrow">
+        <a class="paper" href="assets/img/research/vibration.jpg" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/vibration.jpg" width="2000" height="1645" alt="Motor cross-section mapped to a vibration response surface, and a conditional VAE trained on 2D data with parameter transfer to 3D training" loading="lazy" decoding="async"></a>
+        <figcaption><b>Fig. 1</b> Electromagnetic–vibration prediction — CVAE with parameter transfer from 2D to 3D training.</figcaption>
+      </figure>
+    </div>
+  </article>
+</dialog>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

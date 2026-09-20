@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Jinseong Han</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .lost { min-height: 100dvh; display: grid; place-content: center; justify-items: start; gap: 14px; }
+    .lost h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 12vw, 120px); line-height: .95; letter-spacing: -.02em; }
+    .lost p { max-width: 44ch; color: var(--ink-2); }
+  </style>
+</head>
+<body>
+  <main class="wrap lost">
+    <p class="eyebrow">Error 404</p>
+    <h1>Off the design space.</h1>
+    <p>This page doesn't exist — the sampler must have drawn an infeasible point. Let's get you back to a valid one.</p>
+    <a class="btn btn--primary" href="/">Back to the homepage</a>
+  </main>
+</body>
+</html>

@@ -1,0 +1,3 @@
+/* Loaded only when JavaScript is disabled: show everything that scripts would normally reveal. */
+dialog.modal { display: block; position: static; width: min(1000px, calc(100% - 32px)); max-height: none; margin: 24px auto; }
+.modal__head form, .browser__placeholder, .browser__shield { display: none; }
