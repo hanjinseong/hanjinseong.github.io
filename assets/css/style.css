@@ -155,8 +155,9 @@ b, strong { font-weight: 800; }
 .paper { background: var(--paper); }
 [data-theme="dark"] .paper img { filter: brightness(.95); }
 
-.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.js .reveal.is-in { opacity: 1; transform: none; }
+/* armed by main.js, so a script that never loads cannot leave the page blank */
+.reveal.is-armed { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.is-armed.is-in { opacity: 1; transform: none; }
 
 /* ---------- Nav ---------- */
 .nav {
@@ -486,7 +487,6 @@ b, strong { font-weight: 800; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .js .reveal { opacity: 1; transform: none; }
 }
 
 @media print {

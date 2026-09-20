@@ -27,7 +27,6 @@
   <!-- Set the theme before first paint (saved choice → system preference) -->
   <script>
     (function () {
-      document.documentElement.classList.add('js');
       try {
         var t = localStorage.getItem('theme');
         if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -39,8 +38,8 @@
   <!-- NanumSquare (Bold / ExtraBold) is declared in style.css and served from jsDelivr -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <!-- Bump ?v= whenever style.css / main.js change, so browsers don't keep a stale cached copy -->
-  <link rel="stylesheet" href="assets/css/style.css?v=16">
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=16"></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=18">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=18"></noscript>
 
   <script type="application/ld+json">
   {
@@ -657,6 +656,6 @@
   </article>
 </dialog>
 
-<script src="assets/js/main.js?v=16" defer></script>
+<script src="assets/js/main.js?v=18" defer></script>
 </body>
 </html>

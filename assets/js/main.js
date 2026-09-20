@@ -38,17 +38,40 @@
     });
   }
 
-  /* ---------- Reveal on scroll ---------- */
+  /* ---------- Reveal on scroll ----------
+     Two rules keep content from ever being stuck invisible:
+     1. the script arms the effect itself, so if main.js never loads nothing is hidden;
+     2. a scroll sweep, not an IntersectionObserver — an observer can miss elements that
+        are jumped past (anchor links, fast flicks, a restored scroll position), and a
+        missed element would stay at opacity 0 for good. */
   var reveals = $$('.reveal');
-  if (hasIO) {
-    var ro = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target); }
+  if (reveals.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var pending = reveals.slice();
+    reveals.forEach(function (el) { el.classList.add('is-armed'); });
+
+    // Reveal anything whose top has reached the viewport. Checking position beats an
+    // IntersectionObserver here: the observer reports *changes*, so an element jumped
+    // clean over — below the fold to above it in one go — is never reported and would
+    // stay at opacity 0 for good. Only a handful of elements, and the list shrinks.
+    var sweep = function () {
+      var limit = window.innerHeight * 0.94;
+      pending = pending.filter(function (el) {
+        if (el.getBoundingClientRect().top >= limit) return true;
+        el.classList.add('is-in');
+        return false;
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
-    reveals.forEach(function (el) { ro.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add('is-in'); });
+      if (!pending.length) {
+        window.removeEventListener('scroll', sweep);
+        window.removeEventListener('resize', sweep);
+        window.removeEventListener('load', sweep);
+      }
+    };
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    window.addEventListener('load', sweep); // late images/fonts can move things up
+    sweep();
+    // Last resort: if scroll events never arrive for any reason, nothing stays hidden.
+    setTimeout(function () { pending.slice().forEach(function (el) { el.classList.add('is-in'); }); pending = []; sweep(); }, 8000);
   }
 
   /* ---------- Research dialogs (deep-linkable: #r-parametric …) ---------- */
