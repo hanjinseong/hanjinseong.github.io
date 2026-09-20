@@ -196,7 +196,9 @@ b, strong { font-weight: 800; }
 }
 .hero__in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(24px, 5vw, 72px); }
 /* status line above the name: same place as before, a notch larger and in the main text colour */
-.hero__eyebrow { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; font-size: clamp(14.5px, 1.35vw, 17.5px); font-weight: 800; line-height: 1.45; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+/* 20px, not 18px: the tagline's looser line-height adds ~2px of leading below the name,
+   so the eyebrow needs a touch more margin for the two gaps to *look* equal. */
+.hero__eyebrow { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; font-size: clamp(14.5px, 1.35vw, 17.5px); font-weight: 800; line-height: 1.45; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
 .hero__eyebrow .dot { flex: none; width: 8px; height: 8px; transform: translateY(-1px); }
 .hero__name { margin: 0 0 18px; font-weight: 800; font-size: clamp(40px, 5.6vw, 72px); line-height: 1.02; letter-spacing: -.03em; }
 .hero__ko { margin-left: .4em; font-size: .26em; font-weight: 700; letter-spacing: .06em; color: var(--ink-3); vertical-align: .9em; white-space: nowrap; }
