@@ -31,14 +31,11 @@
         links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
+    // The hero carries id="top", so the Home link is spied like any other section.
     links.forEach(function (a) {
       var sec = $(a.getAttribute('href'));
       if (sec) spy.observe(sec);
     });
-    // Clear the active pill when back in the hero
-    new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) links.forEach(function (a) { a.classList.remove('is-active'); });
-    }, { rootMargin: '-45% 0px -50% 0px' }).observe($('#top'));
   }
 
   /* ---------- Reveal on scroll ---------- */
