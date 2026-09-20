@@ -70,8 +70,6 @@
     window.addEventListener('resize', sweep);
     window.addEventListener('load', sweep); // late images/fonts can move things up
     sweep();
-    // Last resort: if scroll events never arrive for any reason, nothing stays hidden.
-    setTimeout(function () { pending.slice().forEach(function (el) { el.classList.add('is-in'); }); pending = []; sweep(); }, 8000);
   }
 
   /* ---------- Research dialogs (deep-linkable: #r-parametric …) ---------- */
