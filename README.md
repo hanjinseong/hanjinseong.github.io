@@ -8,12 +8,12 @@ Jinseong Han 개인 홈페이지. 빌드 과정이 없는 **순수 정적 사이
 ## 구조
 
 ```
-index.html               한 페이지에 전부: Hero → Research → Live demo → Publications → About
+index.html               한 페이지에 전부: Hero(자기소개) → About → Research → Live demo → Publications
 404.html                 없는 주소로 들어왔을 때
 assets/css/style.css     디자인 전체 (라이트/다크 테마 토큰은 파일 맨 위 :root)
 assets/css/noscript.css  JS가 꺼진 브라우저용 보정
 assets/js/main.js        테마 토글, 연구 상세 모달, 데모 iframe, 스크롤 효과
-assets/img/profile.jpg   프로필 사진 (About 섹션 맨 위 프로필 카드)
+assets/img/profile.jpg   프로필 사진 (첫 화면 Hero 오른쪽)
 assets/img/research/     연구 그림 (*-thumb.jpg = 카드용 축소본)
 assets/img/og.png        카톡/슬랙/링크드인 공유 미리보기 이미지
 favicon.svg, robots.txt, sitemap.xml, .nojekyll
