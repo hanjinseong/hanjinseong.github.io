@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,13 @@
     (function () {
       try {
         var t = localStorage.getItem('theme');
-        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (t !== 'light' && t !== 'dark') t = 'dark'; // first visit: dark, whatever the OS says
         document.documentElement.dataset.theme = t;
       } catch (e) {}
     })();
   </script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="/assets/css/style.css?v=18">
+  <link rel="stylesheet" href="/assets/css/style.css?v=19">
   <style>
     .lost { min-height: 100dvh; display: grid; place-content: center; justify-items: start; gap: 14px; }
     .lost h1 { font-weight: 800; font-size: clamp(44px, 9vw, 92px); line-height: 1.02; letter-spacing: -.03em; }

@@ -10,9 +10,12 @@
   /* ---------- Theme toggle ---------- */
   var themeBtn = $('#theme-toggle');
   if (themeBtn) {
+    var themeColor = $('meta[name="theme-color"]');
     themeBtn.addEventListener('click', function () {
       var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
+      // keep the browser chrome in step; the page ignores the OS preference
+      if (themeColor) themeColor.setAttribute('content', next === 'dark' ? '#090c17' : '#f4f5fa');
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
   }

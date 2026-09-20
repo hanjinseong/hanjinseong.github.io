@@ -204,7 +204,6 @@ b, strong { font-weight: 800; }
 .hero__eyebrow { display: flex; align-items: baseline; gap: 10px; margin-bottom: 17px; font-size: clamp(16px, 1.5vw, 19.5px); font-weight: 800; line-height: 1.45; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
 .hero__eyebrow .dot { flex: none; width: 8px; height: 8px; transform: translateY(-1px); }
 .hero__name { margin: 0 0 18px; font-weight: 800; font-size: clamp(40px, 5.6vw, 72px); line-height: 1.02; letter-spacing: -.03em; }
-.hero__ko { margin-left: .4em; font-size: .26em; font-weight: 700; letter-spacing: .06em; color: var(--ink-3); vertical-align: .9em; white-space: nowrap; }
 .hero__lead { max-width: 24em; text-wrap: balance; font-size: clamp(22px, 2.7vw, 34px); font-weight: 700; line-height: 1.36; letter-spacing: -.02em; color: var(--ink-2); }
 
 .hero__photo { position: relative; z-index: 0; width: clamp(200px, 23vw, 290px); margin: 0 14px 14px 0; }
