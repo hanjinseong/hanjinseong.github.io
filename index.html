@@ -36,11 +36,11 @@
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+  <!-- NanumSquare (Bold / ExtraBold) is declared in style.css and served from jsDelivr -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <!-- Bump ?v= whenever style.css / main.js change, so browsers don't keep a stale cached copy -->
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=4"></noscript>
 
   <script type="application/ld+json">
   {
@@ -83,6 +83,7 @@
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
   <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></symbol>
   <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></symbol>
+  <symbol id="i-lab" viewBox="0 0 24 24"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></symbol>
   <symbol id="i-pointer" viewBox="0 0 24 24"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></symbol>
 </svg>
 
@@ -130,10 +131,10 @@
           <a class="btn" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener"><svg class="i i--fill"><use href="#i-play"/></svg> Launch live demo</a>
         </div>
         <ul class="social" aria-label="Profiles and contact">
-          <li><a href="mailto:nethan1012@kaist.ac.kr"><svg class="i"><use href="#i-mail"/></svg><span>nethan1012@kaist.ac.kr</span></a></li>
-          <li><a href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener me"><svg class="i"><use href="#i-scholar"/></svg><span>Scholar</span></a></li>
-          <li><a href="https://www.linkedin.com/in/jinseong-han-5a1766370/" target="_blank" rel="noopener me"><svg class="i"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
-          <li><a href="https://github.com/hanjinseong" target="_blank" rel="noopener me"><svg class="i"><use href="#i-github"/></svg><span>GitHub</span></a></li>
+          <li><a class="s-mail" href="mailto:nethan1012@kaist.ac.kr"><svg class="i"><use href="#i-mail"/></svg><span>nethan1012@kaist.ac.kr</span></a></li>
+          <li><a class="s-scholar" href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener me"><svg class="i"><use href="#i-scholar"/></svg><span>Google Scholar</span></a></li>
+          <li><a class="s-linkedin" href="https://www.linkedin.com/in/jinseong-han-5a1766370/" target="_blank" rel="noopener me"><svg class="i"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+          <li><a class="s-github" href="https://github.com/hanjinseong" target="_blank" rel="noopener me"><svg class="i"><use href="#i-github"/></svg><span>GitHub</span></a></li>
         </ul>
       </div>
 
@@ -206,7 +207,6 @@
       <header class="sec__head">
         <span class="sec__no">01</span>
         <h2>Research</h2>
-        <p>AI that sets up, runs and accelerates engineering design — across motors, flow fields and manufacturable geometry. Select a topic for figures and details.</p>
       </header>
 
       <!-- Featured -->
@@ -285,7 +285,7 @@
           <span class="sec__no">02</span>
           <h2>Live demo</h2>
         </header>
-        <p class="demo__lead"><b>MotorAI</b> is an interactive console for the multi-agent IPMSM optimization framework. Step through the pipeline and see where the AI is trusted — and where FEA is called in.</p>
+        <p class="demo__lead"><b>MotorAI</b> is an interactive console for the multi-agent IPMSM optimization framework.</p>
         <ol class="agents">
           <li>
             <span class="agents__icon a1"><svg class="i"><use href="#i-chat"/></svg></span>
@@ -329,7 +329,7 @@
       <header class="sec__head">
         <span class="sec__no">03</span>
         <h2>Publications</h2>
-        <p>Journal and conference papers. Full list on <a href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+        <a class="sec__link s-scholar" href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener"><svg class="i"><use href="#i-scholar"/></svg> Google Scholar <svg class="i"><use href="#i-up-right"/></svg></a>
       </header>
 
       <div class="pubs">
@@ -448,11 +448,27 @@
             <p class="profile__name">Jinseong Han <span lang="ko">한진성</span></p>
             <p class="profile__role">M.S. Student · CCS Graduate School of Mobility, KAIST</p>
             <p class="profile__bio">I am an M.S. student at the CCS Graduate School of Mobility, KAIST, working in the Smart Design Lab with Prof. Namwoo Kang. My interests are agentic design, multi-physics and electric motors.</p>
-            <dl class="profile__facts">
-              <div><dt>Lab</dt><dd><a href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener">Smart Design Lab <svg class="i"><use href="#i-up-right"/></svg></a></dd></div>
-              <div><dt>Contact</dt><dd><a href="mailto:nethan1012@kaist.ac.kr">nethan1012@kaist.ac.kr</a></dd></div>
-              <div><dt>Research interests</dt><dd>Agentic design · Multi-physics · Electric motors</dd></div>
-            </dl>
+            <ul class="facts">
+              <li>
+                <a class="fact" href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener">
+                  <span class="fact__icon"><svg class="i"><use href="#i-lab"/></svg></span>
+                  <span class="fact__text"><small>Lab</small><b>Smart Design Lab</b></span>
+                  <svg class="i fact__go"><use href="#i-up-right"/></svg>
+                </a>
+              </li>
+              <li>
+                <a class="fact fact--mail" href="mailto:nethan1012@kaist.ac.kr">
+                  <span class="fact__icon"><svg class="i"><use href="#i-mail"/></svg></span>
+                  <span class="fact__text"><small>Contact</small><b>nethan1012@kaist.ac.kr</b></span>
+                </a>
+              </li>
+              <li class="facts__wide">
+                <div class="fact fact--plain">
+                  <span class="fact__text"><small>Research interests</small></span>
+                  <ul class="chips chips--sm"><li>Agentic design</li><li>Multi-physics</li><li>Electric motors</li></ul>
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -544,10 +560,10 @@
       <p>Smart Design Lab · CCS Graduate School of Mobility, KAIST<br>Daejeon, South Korea · <a href="mailto:nethan1012@kaist.ac.kr">nethan1012@kaist.ac.kr</a></p>
     </div>
     <ul class="social social--foot" aria-label="Profiles">
-      <li><a href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="i"><use href="#i-scholar"/></svg></a></li>
-      <li><a href="https://www.linkedin.com/in/jinseong-han-5a1766370/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-linkedin"/></svg></a></li>
-      <li><a href="https://github.com/hanjinseong" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a></li>
-      <li><a href="mailto:nethan1012@kaist.ac.kr" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a></li>
+      <li><a class="s-scholar" href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="i"><use href="#i-scholar"/></svg></a></li>
+      <li><a class="s-linkedin" href="https://www.linkedin.com/in/jinseong-han-5a1766370/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i"><use href="#i-linkedin"/></svg></a></li>
+      <li><a class="s-github" href="https://github.com/hanjinseong" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a></li>
+      <li><a class="s-mail" href="mailto:nethan1012@kaist.ac.kr" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a></li>
     </ul>
     <p class="foot__legal">© 2026 Jinseong Han. All rights reserved. <span>Last updated: Sep. 2026</span></p>
   </div>
@@ -722,6 +738,6 @@
   </article>
 </dialog>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>

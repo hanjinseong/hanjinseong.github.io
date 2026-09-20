@@ -51,6 +51,7 @@ preview.bat, tools/serve.ps1   로컬 미리보기 서버 (Node/Python 불필요
 
 ## 메모
 
-- 폰트: Google Fonts — Geist(제목·본문 전부) + Geist Mono(라벨·숫자). 세리프는 쓰지 않습니다.
+- 폰트: **나눔스퀘어 하나로 통일** — 본문 Bold(700), 제목 ExtraBold(800). `style.css` 맨 위 `@font-face`에서 PC에 설치된 폰트를 먼저 쓰고, 없으면 jsDelivr CDN(`moonspam/NanumSquare`)에서 woff2를 받습니다.
+- **수정했는데 예전 모양이 보이면 브라우저 캐시입니다.** `style.css`/`main.js`를 고친 뒤에는 `index.html`·`404.html`의 `style.css?v=4`, `main.js?v=4` 숫자를 하나 올려 주세요(방문자 브라우저가 새 파일을 받게 됨). 본인 화면은 Ctrl+F5.
 - Hero의 모터(8극 48슬롯 IPMSM 단면)는 인라인 SVG + CSS 애니메이션입니다. 회전자 속도(60초/회전)와 고정자 코일 점등 순서(3상, 7.5초 주기)가 맞물려 "동기" 회전하도록 되어 있으니 한쪽만 바꾸지 마세요 (`.m-rotor`, `.m-coils`).
 - 데모 콘솔은 언어를 `localStorage['motorai-lang']`에 저장합니다. 같은 도메인에서 처음 방문한 사람에게는 이 사이트가 값을 `en`으로 넣어 영어 콘솔이 먼저 보이게 합니다 (`main.js`).
