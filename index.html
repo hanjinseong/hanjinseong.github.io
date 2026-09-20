@@ -39,8 +39,8 @@
   <!-- NanumSquare (Bold / ExtraBold) is declared in style.css and served from jsDelivr -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <!-- Bump ?v= whenever style.css / main.js change, so browsers don't keep a stale cached copy -->
-  <link rel="stylesheet" href="assets/css/style.css?v=6">
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=6"></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=7"></noscript>
 
   <script type="application/ld+json">
   {
@@ -107,8 +107,8 @@
     <nav class="nav__links" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#research">Research</a>
-      <a href="#demo">Demo</a>
       <a href="#publications"><span class="on-wide">Publications</span><span class="on-narrow">Papers</span></a>
+      <a href="#demo">Demo</a>
     </nav>
     <div class="nav__tools">
       <a class="nav__mail" href="mailto:nethan1012@kaist.ac.kr">Contact</a>
@@ -126,19 +126,14 @@
   <section class="hero" id="top">
     <div class="wrap hero__in">
       <div class="hero__text">
+        <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span>M.S. Student · CCS Graduate School of Mobility, KAIST</p>
         <h1 class="hero__name">Jinseong Han <span class="hero__ko" lang="ko">한진성</span></h1>
-        <p class="hero__role"><span class="dot" aria-hidden="true"></span>M.S. Student <i>&middot;</i> KAIST</p>
-        <p class="hero__aff">CCS Graduate School of Mobility <i>&middot;</i> <a href="https://www.smartdesignlab.org/home" target="_blank" rel="noopener">Smart Design Lab</a> <i>&middot;</i> Adviser: Prof. Namwoo Kang</p>
         <p class="hero__lead">Researching <mark>multi-physics factors for electric vehicles</mark> based on <mark>artificial intelligence</mark>.</p>
         <ul class="chips" aria-label="Research interests">
           <li>Agentic design</li>
           <li>Multi-physics</li>
           <li>Electric motors</li>
         </ul>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#research">Explore research <svg class="i"><use href="#i-down"/></svg></a>
-          <a class="btn" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener"><svg class="i i--fill"><use href="#i-play"/></svg> Launch live demo</a>
-        </div>
         <ul class="social" aria-label="Profiles and contact">
           <li><a class="s-mail" href="mailto:nethan1012@kaist.ac.kr"><svg class="i"><use href="#i-mail"/></svg><span>nethan1012@kaist.ac.kr</span></a></li>
           <li><a class="s-scholar" href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener me"><svg class="i"><use href="#i-scholar"/></svg><span>Google Scholar</span></a></li>
@@ -150,33 +145,6 @@
       <figure class="hero__photo">
         <img src="assets/img/profile.jpg" width="413" height="516" alt="Portrait of Jinseong Han" decoding="async" fetchpriority="high">
       </figure>
-    </div>
-
-    <!-- Highlights -->
-    <div class="wrap">
-      <ul class="highlights" aria-label="Highlights">
-        <li>
-          <a href="#awards">
-            <span class="hl__icon hl__icon--amber"><svg class="i"><use href="#i-trophy"/></svg></span>
-            <span class="hl__text"><small>Award · 2026</small><b>Paper of Distinction — ASME IDETC/CIE, Design Automation Conference</b></span>
-            <svg class="i hl__go"><use href="#i-right"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://arxiv.org/abs/2606.09037" target="_blank" rel="noopener">
-            <span class="hl__icon"><svg class="i"><use href="#i-file"/></svg></span>
-            <span class="hl__text"><small>Preprint · arXiv:2606.09037</small><b>A multi-agent system for motor design optimization via an FEA–AI hybrid approach</b></span>
-            <svg class="i hl__go"><use href="#i-up-right"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="#demo">
-            <span class="hl__icon hl__icon--green"><svg class="i i--fill"><use href="#i-play"/></svg></span>
-            <span class="hl__text"><small>Live demo</small><b>MotorAI — watch three LLM agents design an IPMSM in your browser</b></span>
-            <svg class="i hl__go"><use href="#i-right"/></svg>
-          </a>
-        </li>
-      </ul>
     </div>
   </section>
 
@@ -274,40 +242,32 @@
       <header class="sec__head">
         <span class="sec__no">02</span>
         <h2>Research</h2>
-        <!-- Small accent: an 8-pole / 48-slot IPMSM cross-section; the rotor turns in sync with the stator field. -->
-        <div class="motor sec__motor" id="motor">
-          <svg class="motor__svg" viewBox="-322 -322 644 644" role="img" aria-label="Animated cross-section of an interior permanent magnet synchronous motor">
-            <defs>
-              <path id="m-slot" d="M206 -1.6H212V-5.2L262 -8.2A8.2 8.2 0 0 1 262 8.2L212 5.2V1.6H206"/>
-              <g id="m-coil"><path d="M216 -3.3L237 -4.5V4.5L216 3.3Z"/><path d="M241 -4.8L261 -5.9A5.9 5.9 0 0 1 261 5.9L241 4.8Z"/></g>
-              <g id="m-pole">
-                <rect class="m-pocket" x="-29" y="-5.5" width="58" height="11" rx="3" transform="translate(163.1 30.3) rotate(58.73)"/>
-                <rect class="m-pocket" x="-29" y="-5.5" width="58" height="11" rx="3" transform="translate(163.1 -30.3) rotate(-58.73)"/>
-                <rect class="m-pm" x="-22" y="-4" width="44" height="8" rx="1" transform="translate(163.1 30.3) rotate(58.73)"/>
-                <rect class="m-pm" x="-22" y="-4" width="44" height="8" rx="1" transform="translate(163.1 -30.3) rotate(-58.73)"/>
-                <circle class="m-pocket" cx="127.5" cy="52.8" r="5.5"/>
-                <path class="m-pocket" d="M106.5 27.54A110 110 0 0 1 94.78 55.83A12 12 0 0 1 74.1 43.65A86 86 0 0 0 83.26 21.53A12 12 0 0 1 106.5 27.54Z"/>
-              </g>
-            </defs>
-            <g class="m-axes"><path d="M-318 0H318M0 -318V318"/></g>
-            <g class="m-stator">
-              <circle class="m-iron" r="296"/>
-              <circle class="m-bore" r="206"/>
-              <g class="m-slots"><use href="#m-slot" transform="rotate(3.75)"/><use href="#m-slot" transform="rotate(11.25)"/><use href="#m-slot" transform="rotate(18.75)"/><use href="#m-slot" transform="rotate(26.25)"/><use href="#m-slot" transform="rotate(33.75)"/><use href="#m-slot" transform="rotate(41.25)"/><use href="#m-slot" transform="rotate(48.75)"/><use href="#m-slot" transform="rotate(56.25)"/><use href="#m-slot" transform="rotate(63.75)"/><use href="#m-slot" transform="rotate(71.25)"/><use href="#m-slot" transform="rotate(78.75)"/><use href="#m-slot" transform="rotate(86.25)"/><use href="#m-slot" transform="rotate(93.75)"/><use href="#m-slot" transform="rotate(101.25)"/><use href="#m-slot" transform="rotate(108.75)"/><use href="#m-slot" transform="rotate(116.25)"/><use href="#m-slot" transform="rotate(123.75)"/><use href="#m-slot" transform="rotate(131.25)"/><use href="#m-slot" transform="rotate(138.75)"/><use href="#m-slot" transform="rotate(146.25)"/><use href="#m-slot" transform="rotate(153.75)"/><use href="#m-slot" transform="rotate(161.25)"/><use href="#m-slot" transform="rotate(168.75)"/><use href="#m-slot" transform="rotate(176.25)"/><use href="#m-slot" transform="rotate(183.75)"/><use href="#m-slot" transform="rotate(191.25)"/><use href="#m-slot" transform="rotate(198.75)"/><use href="#m-slot" transform="rotate(206.25)"/><use href="#m-slot" transform="rotate(213.75)"/><use href="#m-slot" transform="rotate(221.25)"/><use href="#m-slot" transform="rotate(228.75)"/><use href="#m-slot" transform="rotate(236.25)"/><use href="#m-slot" transform="rotate(243.75)"/><use href="#m-slot" transform="rotate(251.25)"/><use href="#m-slot" transform="rotate(258.75)"/><use href="#m-slot" transform="rotate(266.25)"/><use href="#m-slot" transform="rotate(273.75)"/><use href="#m-slot" transform="rotate(281.25)"/><use href="#m-slot" transform="rotate(288.75)"/><use href="#m-slot" transform="rotate(296.25)"/><use href="#m-slot" transform="rotate(303.75)"/><use href="#m-slot" transform="rotate(311.25)"/><use href="#m-slot" transform="rotate(318.75)"/><use href="#m-slot" transform="rotate(326.25)"/><use href="#m-slot" transform="rotate(333.75)"/><use href="#m-slot" transform="rotate(341.25)"/><use href="#m-slot" transform="rotate(348.75)"/><use href="#m-slot" transform="rotate(356.25)"/></g>
-              <g class="m-coils c0"><use href="#m-coil" transform="rotate(3.75)"/><use href="#m-coil" transform="rotate(11.25)"/><use href="#m-coil" transform="rotate(48.75)"/><use href="#m-coil" transform="rotate(56.25)"/><use href="#m-coil" transform="rotate(93.75)"/><use href="#m-coil" transform="rotate(101.25)"/><use href="#m-coil" transform="rotate(138.75)"/><use href="#m-coil" transform="rotate(146.25)"/><use href="#m-coil" transform="rotate(183.75)"/><use href="#m-coil" transform="rotate(191.25)"/><use href="#m-coil" transform="rotate(228.75)"/><use href="#m-coil" transform="rotate(236.25)"/><use href="#m-coil" transform="rotate(273.75)"/><use href="#m-coil" transform="rotate(281.25)"/><use href="#m-coil" transform="rotate(318.75)"/><use href="#m-coil" transform="rotate(326.25)"/></g>
-              <g class="m-coils c1"><use href="#m-coil" transform="rotate(18.75)"/><use href="#m-coil" transform="rotate(26.25)"/><use href="#m-coil" transform="rotate(63.75)"/><use href="#m-coil" transform="rotate(71.25)"/><use href="#m-coil" transform="rotate(108.75)"/><use href="#m-coil" transform="rotate(116.25)"/><use href="#m-coil" transform="rotate(153.75)"/><use href="#m-coil" transform="rotate(161.25)"/><use href="#m-coil" transform="rotate(198.75)"/><use href="#m-coil" transform="rotate(206.25)"/><use href="#m-coil" transform="rotate(243.75)"/><use href="#m-coil" transform="rotate(251.25)"/><use href="#m-coil" transform="rotate(288.75)"/><use href="#m-coil" transform="rotate(296.25)"/><use href="#m-coil" transform="rotate(333.75)"/><use href="#m-coil" transform="rotate(341.25)"/></g>
-              <g class="m-coils c2"><use href="#m-coil" transform="rotate(33.75)"/><use href="#m-coil" transform="rotate(41.25)"/><use href="#m-coil" transform="rotate(78.75)"/><use href="#m-coil" transform="rotate(86.25)"/><use href="#m-coil" transform="rotate(123.75)"/><use href="#m-coil" transform="rotate(131.25)"/><use href="#m-coil" transform="rotate(168.75)"/><use href="#m-coil" transform="rotate(176.25)"/><use href="#m-coil" transform="rotate(213.75)"/><use href="#m-coil" transform="rotate(221.25)"/><use href="#m-coil" transform="rotate(258.75)"/><use href="#m-coil" transform="rotate(266.25)"/><use href="#m-coil" transform="rotate(303.75)"/><use href="#m-coil" transform="rotate(311.25)"/><use href="#m-coil" transform="rotate(348.75)"/><use href="#m-coil" transform="rotate(356.25)"/></g>
-            </g>
-            <g class="m-rotor">
-              <circle class="m-iron m-iron--rotor" r="199"/>
-              <g class="m-poles"><use href="#m-pole" transform="rotate(0)"/><use href="#m-pole" transform="rotate(45)"/><use href="#m-pole" transform="rotate(90)"/><use href="#m-pole" transform="rotate(135)"/><use href="#m-pole" transform="rotate(180)"/><use href="#m-pole" transform="rotate(225)"/><use href="#m-pole" transform="rotate(270)"/><use href="#m-pole" transform="rotate(315)"/></g>
-              <circle class="m-shaft" r="58"/>
-              <rect class="m-key" x="-8" y="-66" width="16" height="13" rx="1.5"/>
-              <circle class="m-center" r="4"/>
-            </g>
-          </svg>
-        </div>
       </header>
+
+      <!-- Highlights: award, preprint, live demo -->
+      <ul class="highlights" aria-label="Highlights">
+        <li>
+          <a href="#awards">
+            <span class="hl__icon hl__icon--amber"><svg class="i"><use href="#i-trophy"/></svg></span>
+            <span class="hl__text"><small>Award · 2026</small><b>Paper of Distinction — ASME IDETC/CIE, Design Automation Conference</b></span>
+            <svg class="i hl__go"><use href="#i-right"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/2606.09037" target="_blank" rel="noopener">
+            <span class="hl__icon"><svg class="i"><use href="#i-file"/></svg></span>
+            <span class="hl__text"><small>Preprint · arXiv:2606.09037</small><b>A multi-agent system for motor design optimization via an FEA–AI hybrid approach</b></span>
+            <svg class="i hl__go"><use href="#i-up-right"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#demo">
+            <span class="hl__icon hl__icon--green"><svg class="i i--fill"><use href="#i-play"/></svg></span>
+            <span class="hl__text"><small>Live demo</small><b>MotorAI — watch three LLM agents design an IPMSM in your browser</b></span>
+            <svg class="i hl__go"><use href="#i-right"/></svg>
+          </a>
+        </li>
+      </ul>
 
       <!-- Featured -->
       <article class="feature reveal">
@@ -377,57 +337,11 @@
     </div>
   </section>
 
-  <!-- ───────────── Live demo ───────────── -->
-  <section class="demo" id="demo">
-    <div class="wrap demo__in">
-      <div class="demo__text">
-        <header class="sec__head sec__head--stack">
-          <span class="sec__no">03</span>
-          <h2>Live demo</h2>
-        </header>
-        <p class="demo__lead"><b>MotorAI</b> is an interactive console for the multi-agent IPMSM optimization framework.</p>
-        <ol class="agents">
-          <li>
-            <span class="agents__icon a1"><svg class="i"><use href="#i-chat"/></svg></span>
-            <div><b>Design agent</b><span>Turns a chat into a structured problem: objective, design variables, constraints.</span></div>
-          </li>
-          <li>
-            <span class="agents__icon a2"><svg class="i"><use href="#i-chart"/></svg></span>
-            <div><b>Training agent</b><span>Resamples failed and sparse regions, then trains a UQ-aware deep-ensemble surrogate.</span></div>
-          </li>
-          <li>
-            <span class="agents__icon a3"><svg class="i"><use href="#i-sliders"/></svg></span>
-            <div><b>Optimization agent</b><span>An LLM sets the switching threshold τ that routes each evaluation to FEA or AI.</span></div>
-          </li>
-        </ol>
-        <div class="demo__cta">
-          <a class="btn btn--light" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open full demo <svg class="i"><use href="#i-up-right"/></svg></a>
-          <a class="btn btn--ghost" href="https://github.com/hanjinseong/ipmsm-design" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg> Source</a>
-          <span class="demo__note">Runs in the browser · KO / EN</span>
-        </div>
-      </div>
-
-      <div class="browser reveal" id="demo-frame" data-src="https://hanjinseong.github.io/ipmsm-design/">
-        <div class="browser__bar">
-          <span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="browser__url">hanjinseong.github.io/ipmsm-design</span>
-          <a class="browser__open" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener" aria-label="Open the demo in a new tab"><svg class="i"><use href="#i-up-right"/></svg></a>
-        </div>
-        <div class="browser__view">
-          <div class="browser__placeholder" aria-hidden="true"><span class="spinner"></span>Loading live preview…</div>
-          <!-- iframe is injected by main.js when this section scrolls into view -->
-          <button class="browser__shield" type="button"><span><svg class="i"><use href="#i-pointer"/></svg> Click to interact</span></button>
-          <noscript><a class="browser__fallback" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open the live demo ↗</a></noscript>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ───────────── Publications ───────────── -->
   <section class="sec" id="publications">
     <div class="wrap">
       <header class="sec__head">
-        <span class="sec__no">04</span>
+        <span class="sec__no">03</span>
         <h2>Publications</h2>
         <a class="sec__link s-scholar" href="https://scholar.google.com/citations?user=-iLoC9cAAAAJ&hl=en" target="_blank" rel="noopener"><svg class="i"><use href="#i-scholar"/></svg> Google Scholar <svg class="i"><use href="#i-up-right"/></svg></a>
       </header>
@@ -529,6 +443,52 @@
           </ol>
           <button class="more" id="pub-more" type="button" aria-expanded="false" aria-controls="publist-domestic" hidden>Show all 7 <svg class="i"><use href="#i-down"/></svg></button>
         </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── Live demo ───────────── -->
+  <section class="demo" id="demo">
+    <div class="wrap demo__in">
+      <div class="demo__text">
+        <header class="sec__head sec__head--stack">
+          <span class="sec__no">04</span>
+          <h2>Live demo</h2>
+        </header>
+        <p class="demo__lead"><b>MotorAI</b> is an interactive console for the multi-agent IPMSM optimization framework.</p>
+        <ol class="agents">
+          <li>
+            <span class="agents__icon a1"><svg class="i"><use href="#i-chat"/></svg></span>
+            <div><b>Design agent</b><span>Turns a chat into a structured problem: objective, design variables, constraints.</span></div>
+          </li>
+          <li>
+            <span class="agents__icon a2"><svg class="i"><use href="#i-chart"/></svg></span>
+            <div><b>Training agent</b><span>Resamples failed and sparse regions, then trains a UQ-aware deep-ensemble surrogate.</span></div>
+          </li>
+          <li>
+            <span class="agents__icon a3"><svg class="i"><use href="#i-sliders"/></svg></span>
+            <div><b>Optimization agent</b><span>An LLM sets the switching threshold τ that routes each evaluation to FEA or AI.</span></div>
+          </li>
+        </ol>
+        <div class="demo__cta">
+          <a class="btn btn--light" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open full demo <svg class="i"><use href="#i-up-right"/></svg></a>
+          <a class="btn btn--ghost" href="https://github.com/hanjinseong/ipmsm-design" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg> Source</a>
+          <span class="demo__note">Runs in the browser · KO / EN</span>
+        </div>
+      </div>
+
+      <div class="browser reveal" id="demo-frame" data-src="https://hanjinseong.github.io/ipmsm-design/">
+        <div class="browser__bar">
+          <span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="browser__url">hanjinseong.github.io/ipmsm-design</span>
+          <a class="browser__open" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener" aria-label="Open the demo in a new tab"><svg class="i"><use href="#i-up-right"/></svg></a>
+        </div>
+        <div class="browser__view">
+          <div class="browser__placeholder" aria-hidden="true"><span class="spinner"></span>Loading live preview…</div>
+          <!-- iframe is injected by main.js when this section scrolls into view -->
+          <button class="browser__shield" type="button"><span><svg class="i"><use href="#i-pointer"/></svg> Click to interact</span></button>
+          <noscript><a class="browser__fallback" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open the live demo ↗</a></noscript>
+        </div>
       </div>
     </div>
   </section>
@@ -721,6 +681,6 @@
   </article>
 </dialog>
 
-<script src="assets/js/main.js?v=6" defer></script>
+<script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>

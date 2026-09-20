@@ -54,14 +54,6 @@
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* ---------- Motor: only animate while visible ---------- */
-  var motor = $('#motor');
-  if (motor && hasIO) {
-    new IntersectionObserver(function (entries) {
-      motor.classList.toggle('is-paused', !entries[0].isIntersecting);
-    }).observe(motor);
-  }
-
   /* ---------- Research dialogs (deep-linkable: #r-parametric …) ---------- */
   var modals = $$('dialog.modal');
   var canModal = modals.length && typeof modals[0].showModal === 'function';
