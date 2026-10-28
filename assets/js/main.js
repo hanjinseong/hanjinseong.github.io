@@ -147,22 +147,24 @@
     });
   }
 
-  /* ---------- Live demo: lazy iframe, scaled to a 1280×760 desktop viewport ---------- */
-  var frame = $('#demo-frame');
-  if (frame) {
-    var VW = 1280;
+  /* ---------- Live demos: lazy iframes, each scaled to a 1280×760 desktop viewport ---------- */
+  var VW = 1280;
+  $$('.browser[data-src]').forEach(function (frame) {
     var view = $('.browser__view', frame);
     var shield = $('.browser__shield', frame);
     var iframe = null;
     var scale = function () { return view.clientWidth / VW; };
 
-    // The console remembers its language in localStorage ('motorai-lang', default KO). When this page is served
-    // from the same origin as the demo, first-time visitors coming from this English page get the EN console.
-    try {
-      if (new URL(frame.dataset.src).origin === location.origin && !localStorage.getItem('motorai-lang')) {
-        localStorage.setItem('motorai-lang', 'en');
-      }
-    } catch (e) {}
+    // The first console (ipmsm-design) remembers its language in localStorage ('motorai-lang', default KO). When this
+    // page is served from the same origin, first-time visitors coming from this English page get the EN console.
+    // The reverse-design console defaults to EN on its own.
+    if (frame.id === 'demo-frame') {
+      try {
+        if (new URL(frame.dataset.src).origin === location.origin && !localStorage.getItem('motorai-lang')) {
+          localStorage.setItem('motorai-lang', 'en');
+        }
+      } catch (e) {}
+    }
 
     var hint = $('span', shield);
     var hintIcon = hint.innerHTML.slice(0, hint.innerHTML.indexOf('</svg>') + 6);
@@ -179,7 +181,7 @@
       if (iframe) return;
       iframe = document.createElement('iframe');
       iframe.src = frame.dataset.src;
-      iframe.title = 'MotorAI — live demo of the multi-agent IPMSM design optimization console';
+      iframe.title = $('.browser__url', frame).textContent + ' — live demo';
       iframe.setAttribute('tabindex', '-1');
       iframe.addEventListener('load', function () { frame.classList.add('is-loaded'); });
       view.insertBefore(iframe, view.firstChild);
@@ -205,5 +207,5 @@
       frame.classList.remove('is-live');
       iframe.setAttribute('tabindex', '-1');
     });
-  }
+  });
 })();

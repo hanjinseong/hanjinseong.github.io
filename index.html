@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Jinseong Han">
   <meta property="og:title" content="Jinseong Han — AI for Autonomous Design of Electric Vehicles">
-  <meta property="og:description" content="M.S. student at KAIST (Smart Design Lab). LLM multi-agent motor design, FEA–AI hybrid optimization, multi-physics surrogates. Live demo inside.">
+  <meta property="og:description" content="M.S. student at KAIST (Smart Design Lab). LLM multi-agent motor design, FEA–AI hybrid optimization, multi-physics surrogates. Live demos inside.">
   <meta property="og:url" content="https://hanjinseong.github.io/">
   <meta property="og:image" content="https://hanjinseong.github.io/assets/img/og.png">
   <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
   <!-- NanumSquare (Bold / ExtraBold) is declared in style.css and served from jsDelivr -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <!-- Bump ?v= whenever style.css / main.js change, so browsers don't keep a stale cached copy -->
-  <link rel="stylesheet" href="assets/css/style.css?v=21">
+  <link rel="stylesheet" href="assets/css/style.css?v=22">
   <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=21"></noscript>
 
   <script type="application/ld+json">
@@ -277,7 +277,7 @@
             <span class="no">02</span>
             <b class="card__title">Multi-Agent based Non-parametric Motor Design Optimization</b>
             <span class="card__desc">Agents generate and edit rotor images beyond fixed parameters, then turn them into STEP geometry for FEA–AI evaluation.</span>
-            <span class="card__tags">Generative design · LLM agents</span>
+            <span class="card__tags">Generative design · LLM agents <span class="card__live"><i class="pulse" aria-hidden="true"></i>Live demo</span></span>
           </span>
         </a>
         <a class="card reveal" href="#r-flow" data-modal="r-flow">
@@ -363,7 +363,9 @@
               <div class="pub__main">
                 <p class="pub__title">A Multi-Agent System-Based Non-Parametric Image Generation for IPMSM Design Optimization</p>
                 <p class="pub__authors"><b>Han, J.</b>, Yang, S., and Kang, N.*</p>
-                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)</p>
+                <p class="pub__venue">The Korean Society of Mechanical Engineers (KSME)
+                  <a class="pub__link" href="https://hanjinseong.github.io/motor-reverse-design/" target="_blank" rel="noopener">Demo <svg class="i"><use href="#i-up-right"/></svg></a>
+                </p>
               </div>
             </li>
             <li class="pub">
@@ -429,6 +431,7 @@
           <span class="sec__no">04</span>
           <h2>Live demo</h2>
         </header>
+        <p class="eyebrow demo__eyebrow">Demo 01 · Research 01 · parametric</p>
         <p class="demo__lead"><b>MotorAI</b> is an interactive console for the multi-agent IPMSM optimization framework.</p>
         <ol class="agents">
           <li>
@@ -464,6 +467,46 @@
           <noscript><a class="browser__fallback" href="https://hanjinseong.github.io/ipmsm-design/" target="_blank" rel="noopener">Open the live demo ↗</a></noscript>
         </div>
       </div>
+      <div class="demo__in demo__in--second">
+        <div class="demo__text">
+          <p class="eyebrow demo__eyebrow">Demo 02 · Research 02 · non-parametric</p>
+          <h3 class="demo__h3">Non-parametric reverse design</h3>
+          <p class="demo__lead"><b>MotorAI Reverse Design</b> breeds IPMSM rotor <b>images</b> in an evolutionary loop — replayed from a real 5-generation, 300-FEA campaign.</p>
+          <ol class="agents">
+            <li>
+              <span class="agents__icon a1"><svg class="i"><use href="#i-chat"/></svg></span>
+              <div><b>Design agent</b><span>Turns a reference image, the rotor/stator envelope and the objectives into a Design Problem Card.</span></div>
+            </li>
+            <li>
+              <span class="agents__icon a2"><svg class="i"><use href="#i-chart"/></svg></span>
+              <div><b>Generation agent</b><span>Pareto parents → zero-shot topology moves and fine-tuned text edits → feasibility gate → embedding-based filter.</span></div>
+            </li>
+            <li>
+              <span class="agents__icon a3"><svg class="i"><use href="#i-sliders"/></svg></span>
+              <div><b>Evaluation agent</b><span>Image → STEP → Maxwell 2D FEA, ε-dominance vs the parent, improvement directions and an operator scoreboard.</span></div>
+            </li>
+          </ol>
+          <div class="demo__cta">
+            <a class="btn btn--light" href="https://hanjinseong.github.io/motor-reverse-design/" target="_blank" rel="noopener">Open full demo <svg class="i"><use href="#i-up-right"/></svg></a>
+            <a class="btn btn--ghost" href="https://github.com/hanjinseong/motor-reverse-design" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg> Source</a>
+            <span class="demo__note">Runs in the browser · EN / KO</span>
+          </div>
+        </div>
+
+        <div class="browser reveal" id="demo-frame-2" data-src="https://hanjinseong.github.io/motor-reverse-design/">
+          <div class="browser__bar">
+            <span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="browser__url">hanjinseong.github.io/motor-reverse-design</span>
+            <a class="browser__open" href="https://hanjinseong.github.io/motor-reverse-design/" target="_blank" rel="noopener" aria-label="Open the demo in a new tab"><svg class="i"><use href="#i-up-right"/></svg></a>
+          </div>
+          <div class="browser__view">
+            <div class="browser__placeholder" aria-hidden="true"><span class="spinner"></span>Loading live preview…</div>
+            <!-- iframe is injected by main.js when this section scrolls into view -->
+            <button class="browser__shield" type="button"><span><svg class="i"><use href="#i-pointer"/></svg> Click to interact</span></button>
+            <noscript><a class="browser__fallback" href="https://hanjinseong.github.io/motor-reverse-design/" target="_blank" rel="noopener">Open the live demo ↗</a></noscript>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -482,7 +525,7 @@
       <li><a class="s-github" href="https://github.com/hanjinseong" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a></li>
       <li><a class="s-mail" href="mailto:nethan1012@kaist.ac.kr" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a></li>
     </ul>
-    <p class="foot__legal">© 2026 Jinseong Han. All rights reserved. <span>Last updated: Sep. 2026</span></p>
+    <p class="foot__legal">© 2026 Jinseong Han. All rights reserved. <span>Last updated: Oct. 2026</span></p>
   </div>
 </footer>
 
@@ -542,13 +585,14 @@
       <div>
         <p class="eyebrow">Research 02</p>
         <h3 id="r-nonparametric-t">Multi-Agent based Non-parametric Motor Design Optimization</h3>
-        <ul class="badges"><li class="badge">Generative design</li><li class="badge">LLM agents</li><li class="badge">Image → STEP</li><li class="badge">IPMSM</li></ul>
+        <ul class="badges"><li class="badge">Generative design</li><li class="badge">LLM agents</li><li class="badge">Image → STEP</li><li class="badge">IPMSM</li><li class="badge badge--green"><span class="pulse" aria-hidden="true"></span>Live demo</li></ul>
       </div>
       <form method="dialog"><button class="iconbtn" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></form>
     </header>
     <div class="modal__body">
       <div class="prose">
         <p>Moving beyond a fixed set of design parameters, this work lets agents explore motor shapes directly as images. A <b>design agent</b> sets up the problem from a reference image, the objective functions and the design space. The <b>generation agent</b> works in three parts: an <i>exploration</i> agent draws new rotor images with a text-to-image model, an <i>exploitation</i> agent turns measured performance into an improvement direction for a fine-tuned model and repairs broken shapes, and a <i>filtering</i> agent keeps the promising candidates using a multi-modal embedding of each image and a description of it. The <b>evaluation agent</b> extracts CAD from the image — RGB to binary to line-and-fillet to STEP — and scores it with the uncertainty-aware FEA–AI hybrid model, calling FEA where the surrogate is unsure.</p>
+        <p>The loop is evolutionary. Parents are the Pareto front of every design FEA has solved (non-dominated sorting with crowding), each generation mixes zero-shot topology moves with fine-tuned text edits, candidates pass a feasibility gate and a farthest-point filter in embedding space, and improvement is judged by ε-dominance over the parent. Every FEA outcome updates an operator scoreboard whose Thompson-sampled shares steer the next generation. On the Nabla_25838 baseline, five generations (300 FEA solves) raised the hypervolume 3.2× and found designs with up to 25 % lower iron loss. The live demo replays that campaign with its real data.</p>
       </div>
       <figure class="fig">
         <a class="paper" href="assets/img/research/overall_flow.png" target="_blank" rel="noopener" title="Open full size"><img src="assets/img/research/overall_flow.png" width="2000" height="1010" alt="Pipeline of a design agent, a generation agent made of exploration, exploitation and filtering agents, and an evaluation agent doing CAD extraction and FEA–AI evaluation" loading="lazy" decoding="async"></a>
@@ -563,6 +607,10 @@
         <ul>
           <li>Han, J., Yang, S., and Kang, N.* (2026). A Multi-Agent System-Based Non-Parametric Image Generation for IPMSM Design Optimization. KSME.</li>
         </ul>
+      </div>
+      <div class="modal__cta">
+        <a class="btn btn--primary btn--sm" href="https://hanjinseong.github.io/motor-reverse-design/" target="_blank" rel="noopener"><svg class="i i--fill"><use href="#i-play"/></svg> Live demo</a>
+        <a class="btn btn--sm" href="https://github.com/hanjinseong/motor-reverse-design" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg> Source</a>
       </div>
     </div>
   </article>
@@ -655,6 +703,6 @@
   </article>
 </dialog>
 
-<script src="assets/js/main.js?v=21" defer></script>
+<script src="assets/js/main.js?v=22" defer></script>
 </body>
 </html>

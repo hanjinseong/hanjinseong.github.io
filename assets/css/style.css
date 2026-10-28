@@ -325,6 +325,14 @@ b, strong { font-weight: 800; }
 .browser.is-live .browser__shield { display: none; }
 .browser.is-live { border-color: rgba(146, 139, 255, .6); }
 .browser__fallback { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; }
+.demo__eyebrow { margin-bottom: 10px; color: #a9a3ff; }
+.demo__in--second { margin-top: clamp(44px, 6vw, 80px); padding-top: clamp(40px, 5vw, 64px); border-top: 1px solid rgba(255, 255, 255, .1); }
+.demo__in--second .demo__eyebrow { color: #8fe3c2; }
+.demo__h3 { margin-bottom: 12px; font-weight: 800; font-size: clamp(24px, 2.8vw, 32px); line-height: 1.08; letter-spacing: -.03em; color: #fff; }
+.demo__in--second .browser { box-shadow: 0 40px 90px -30px rgba(16, 185, 129, .5), 0 0 0 1px rgba(255, 255, 255, .03); }
+.demo__in--second .browser.is-live { border-color: rgba(52, 211, 153, .6); }
+.card__live { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; font-weight: 700; color: var(--green-ink); }
+.card__live .pulse { display: inline-block; }
 @media (hover: none) { .browser__shield span { opacity: 1; transform: none; } }
 
 /* ---------- Publications ---------- */

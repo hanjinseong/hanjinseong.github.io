@@ -3,7 +3,7 @@
 Jinseong Han 개인 홈페이지. 빌드 과정이 없는 **순수 정적 사이트**(HTML + CSS + JS)라서 파일을 고치고 `git push` 하면 바로 반영됩니다.
 
 - 배포 주소: <https://hanjinseong.github.io/>
-- 라이브 데모(별도 저장소): <https://hanjinseong.github.io/ipmsm-design/> → 이 사이트의 *Live demo* 섹션에 iframe으로 임베드되어 있습니다.
+- 라이브 데모(별도 저장소): <https://hanjinseong.github.io/ipmsm-design/> (연구 01, parametric) · <https://hanjinseong.github.io/motor-reverse-design/> (연구 02, non-parametric) → 이 사이트의 *Live demo* 섹션에 iframe으로 임베드되어 있습니다.
 
 ## 구조
 
@@ -54,4 +54,4 @@ preview.bat, tools/serve.ps1   로컬 미리보기 서버 (Node/Python 불필요
 
 - 폰트: **나눔스퀘어 하나로 통일** — 본문 Bold(700), 제목 ExtraBold(800). `style.css` 맨 위 `@font-face`에서 PC에 설치된 폰트를 먼저 쓰고, 없으면 jsDelivr CDN(`moonspam/NanumSquare`)에서 woff2를 받습니다.
 - **수정했는데 예전 모양이 보이면 브라우저 캐시입니다.** `style.css`/`main.js`를 고친 뒤에는 `index.html`·`404.html`의 `style.css?v=N`, `main.js?v=N` 숫자를 하나 올려 주세요(방문자 브라우저가 새 파일을 받게 됨). 본인 화면은 Ctrl+F5.
-- 데모 콘솔은 언어를 `localStorage['motorai-lang']`에 저장합니다. 같은 도메인에서 처음 방문한 사람에게는 이 사이트가 값을 `en`으로 넣어 영어 콘솔이 먼저 보이게 합니다 (`main.js`).
+- 데모 콘솔(연구 01)은 언어를 `localStorage['motorai-lang']`에 저장합니다. 연구 02 콘솔은 기본이 영어이고 `localStorage['motorai-rd-lang']`을 씁니다. 같은 도메인에서 처음 방문한 사람에게는 이 사이트가 값을 `en`으로 넣어 영어 콘솔이 먼저 보이게 합니다 (`main.js`).
