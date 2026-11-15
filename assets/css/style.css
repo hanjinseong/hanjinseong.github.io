@@ -213,8 +213,8 @@ b, strong { font-weight: 800; }
 
 /* interest chips — one hue per topic (reused in the About card) */
 .chips { gap: 12px 14px; margin-top: clamp(28px, 3.2vw, 40px); }
-.chips li { --c: var(--accent); --c-soft: var(--accent-soft); gap: 9px; height: 36px; padding: 0 17px 0 14px; border-color: transparent; background: var(--c-soft); color: var(--c); font-size: 14.5px; font-weight: 800; letter-spacing: 0; }
-.chips li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.chips li { --c: var(--accent); --c-soft: var(--accent-soft); gap: 10px; height: 42px; padding: 0 20px 0 16px; border-color: transparent; background: var(--c-soft); color: var(--c); font-size: 17px; font-weight: 800; letter-spacing: 0; }
+.chips li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
 .chips li:nth-child(2) { --c: var(--green-ink); --c-soft: var(--green-soft); }
 .chips li:nth-child(3) { --c: var(--amber-ink); --c-soft: var(--amber-soft); }
 
@@ -463,7 +463,7 @@ b, strong { font-weight: 800; }
   .nav__home .i { font-size: 20px; }
   .hero__photo { width: 136px; }
   .chips { gap: 10px; }
-  .chips li { height: 33px; padding: 0 13px 0 11px; font-size: 13.5px; }
+  .chips li { height: 38px; padding: 0 16px 0 13px; font-size: 15.5px; }
   .social { gap: 10px; }
   .sec__link { height: 36px; padding: 0 11px 0 9px; font-size: 13.5px; }
   .cards { grid-template-columns: minmax(0, 1fr); gap: 10px; }
